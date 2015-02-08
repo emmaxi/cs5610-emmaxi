@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment 3-1</title>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+ 
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+</head>
+<body style="margin:80px;">
+<h1>How to make a simple layout page using Bootstrap?</h1>
+ <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+       
+          <a class="navbar-brand" href="../../Default.aspx">EmmaXi Home</a>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Demo</h1>
+        <p>This is a demo for simple layout of webpage using Bootstrap. It includes a large callout called a jumbotron and three supporting pieces of content.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Emma</h2>
+          <p>Northeastern's tradition of global engagement empowers our undergraduates to chart their own academic path, through more than 90 majors and concentrations and global experiential learning opportunities in 92 countries. That same tradition of engagement ensures that we offer graduate programs aligned with the emerging industries of the 21st century. Our 158 graduate programs integrate the highest levels of scholarship and research.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Xi</h2>
+          <p>Northeastern's tradition of global engagement empowers our undergraduates to chart their own academic path, through more than 90 majors and concentrations and global experiential learning opportunities in 92 countries. That same tradition of engagement ensures that we offer graduate programs aligned with the emerging industries of the 21st century. Our 158 graduate programs integrate the highest levels of scholarship and research.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
+      <footer>
+        <p>&copy; Xi Wang</p>
+      </footer>
+    </div> <!-- /container -->
+<h2>core code and explain</h2>
+<p>use these links below to import Bootstrap</p>
+ <code style="color:Olive;">
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css&quot;&gt; <br />
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css&quot;&gt; <br />
+    &lt;script src=&quot;//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+ </code>
+  <br />
+  <p>we create a Navigation,a Content area and a Footer in this page. The tag of &lt;div class=&quot;jumbotron&quot;&gt;,&lt;div class=&quot;container&quot;&gt;and some others are redefined in Bootstrap to make it more customer firendly.</p>
+  <p>Beside, uses grid system that utilizes a 12 column layout, meaning that the page can be divided by 12 equal columns if you so desire.</p>
+  <code style="color:Olive;">&lt;div class=&quot;row&quot;&gt;<br />
+        &lt;div class=&quot;col-md-6&quot;&gt;
+          &lt;h2&gt;Emma&lt;/h2&gt;
+          &lt;p&gt;&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;View details &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;<br />
+        &lt;div class=&quot;col-md-6&quot;&gt;
+          &lt;h2&gt;Xi&lt;/h2&gt;  
+          &lt;p&gt;&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;View details &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+       &lt;/div&gt;<br />
+      &lt;/div&gt;<br /></code>
+  <p>you can see classes col-md-6. This will divide the page into two 6 columns width, making our content area into two equal sides. A benefit to using this grid system is that it works out the width of each of these colums relative to the screen size, so you don’t have to worry about writing any extra media queries to get the site working on all screen resolutions.</p>
+ <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/bootstrap/experiment3-1.htm" target="_blank">Experiment3-1 Source</a>
+   
+  <h3>References:</h3>
+    <a href="http://bootstrap.evget.com/examples/jumbotron/index.html" target="_blank">Jumbotron Template</a>
+     <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

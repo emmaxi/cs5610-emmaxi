@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>experiment1-2</title>
+</head>
+<body style="margin:50px">
+<h1>How to play audio in HTML?</h1>
+
+<p>Also using the video tag of HTML5. According to this feature we can start,stop,loop,increase and decrease volume of the audio.</p>
+<p>Have a try with the all these buttons below~ (the audio is set to auto-play now)</p>
+
+<audio id ="audio" controls  autoplay>
+     <source src="../../music/myMusic.mp3" type="audio/mpeg" >      
+</audio>
+        
+        <div style="POSITION:relative"><input id="play" type="button" onClick="document.getElementById('audio').play()" value="Play Demo"/> 
+            <input id="pause"       type="button" onClick="document.getElementById('audio').pause()"        value="Pause Demo"/> 
+            <input id="volumedown"  type="button" onClick="document.getElementById('audio').volume-=0.1"    value="Vol. Down"/>
+            <input id="volumeup"    type="button" onClick="document.getElementById('audio').volume+=0.1"    value="Vol. Up"/> 
+            <input id="mute"        type="button" onClick="toggleSound()"                                   value="Mute or Unmute"/>
+        </div>
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/html_css/experiment1-2.htm" target="_blank">Experiment1-2 Source</a>
+
+<h3>References:</h3>
+    <a href="http://zespia.tw/blog/2012/02/04/lab-html5-audio/" target="_blank">zespia</a>
+  
+
+<footer>copy right by Xi Wang</footer>
+
+</body>
+</html>

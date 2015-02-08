@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment2-3</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body style="margin:50px;">
+<h1>How to resize image using JavaScript and HTML5?</h1>
+<div class="result">
+       <b>Silde the switch to zoom the image:</b>
+       <br />
+       <input id="zoomSelector" type="range" min="0" max="100" value="0" step="1" onchange="sizechange()"><span id="currentSize">0%</span>
+       <p>
+        <img src="../../images/picture/avatar2.jpg" id="demo" />
+       </p>
+       <script>
+         function sizechange() {
+            //Original height of the image in pixels
+            var img_height = 200;
+
+           // Get the current zoom value of the range control
+            var step = document.getElementById('zoomSelector').valueAsNumber;
+
+           // Calculate the percentage increase/decrease
+            var changedHeight = img_height * (1+ (step / 100));
+
+           //Set the new height to the image tag
+            document.getElementById('demo').height = changedHeight;
+
+           // Display the current zoom value to the user,the get the value of step from the system
+            document.getElementById('currentSize').innerText = step + '%';
+           }
+        </script>
+
+         <hr />
+
+            <p>
+                The purpose of this experiment is to write a simple javascript that enable users to resize the image into whatever percentage they want.Usually the zoom is from 0% to 100%.
+            </p>
+
+            <p>
+                To start with, we have an image whose orignal size is <code>200px</code> and its <code>id="demo"</code>. We also have a HTML5 range control (<code>id="zoomSelector"</code>) which is used to get the percentage zoom from the user.
+               The zoomSelector can swing between 0% to 100% with 1% increase on each step. The <code>onchange</code> event of the zoomSelector is set to trigger a javascript function <code>sizechange()</code>.
+            </p>
+
+            <p>
+                The <code>sizechange()</code> function is responsible for changing the size of the image as every input value.
+
+                We start by declaring the original size of the image to keep the logic simple.
+                <pre>
+                    Original height of the image in pixels:
+                    var img_height = 200;
+                </pre>
+
+                We then get the current zoom value provided by the user by using <code>document.getElementById()</code> function.
+
+                <pre>
+                    Get the current zoom value of the range control:
+                    var step = document.getElementById('zoomSelector').valueAsNumber;
+                </pre>
+
+                Then, we calculate the height after changed.
+                <pre>
+                    Calculate the percentage increase/decrease:
+                    var changedHeight = img_height * (1+ (step / 100));
+
+                    Set the new height to the image tag:
+                    document.getElementById('demo').height = changedHeight;
+                </pre>
+
+                Finally,We display the current zoom size of the image in percentage to the user
+                <pre>
+                    Display the current zoom value to the user
+                    document.getElementById('currentSize').innerText = step + '%';
+                </pre>
+
+            </p>
+            <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/javascript/experiment2-3.htm" target="_blank">Experiment2-3 Source</a>
+   
+  <h3>References:</h3>
+    <a href="http://www.w3schools.com/js/DEFAULT.asp" target="_blank">W3School JavaScript</a>
+</div>
+</body>
+</html>

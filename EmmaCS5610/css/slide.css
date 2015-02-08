@@ -1,0 +1,48 @@
+﻿
+body {
+	width:100%;
+	margin:50px;
+}	
+
+.slider-container {
+	width:250px;
+	height:200px;
+	position:relative;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+
+.slider {
+	width:250px;
+	height:200px;
+}
+
+	
+.slider img {
+	width:250px;
+	height:200px;
+}
+
+.prev {
+	cursor:pointer; /* cursor will change to a hand*/
+	z-index:10; /* z-index of 10 which is the highest to make sure that the button will show at the top.*/
+	position:absolute;
+	top:85px;
+	left:0px;
+	visibility:visible;
+}
+
+.next {
+	cursor:pointer;
+	z-index:10;
+	position:absolute;
+	top:85px;	
+	right:0px;
+	visibility:visible;
+}
+
+.slider li{
+	margin:0px;
+	text-indent:0px;	
+}

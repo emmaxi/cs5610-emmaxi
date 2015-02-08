@@ -1,0 +1,69 @@
+﻿    ul.master_navigation
+    {
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+        list-style: none;
+        margin: 0.5em 0;
+        padding: 0;
+    }
+
+    ul.master_navigation li
+    {
+        display: inline-block;
+        padding: 0 0.5%;
+    }
+
+    a
+    {
+        color: #08f;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:visited
+    {
+        color: #88f;
+    }
+
+    a:hover
+    {
+        color: #f00;
+    }
+
+    p
+    {
+        text-align: justify;
+        display:inline;
+        padding:20px;
+    }
+    
+    .index_pic
+   {
+    width:240px; 
+    height:320px;
+    float:left;
+    padding:10px;}
+    
+ 
+    body {
+        width:900px;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x:hidden;
+    }
+
+    .pad {
+        padding: 10px;
+    }
+    
+    @media screen and (max-width:320px)
+    {
+         .index_pic
+      {
+        width:100px; 
+        height:auto;
+    float:left;
+        }
+    }

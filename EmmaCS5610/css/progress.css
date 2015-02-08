@@ -1,0 +1,63 @@
+﻿body {
+    min-width:835px;
+}
+
+
+.my_button {
+    width: 100px;
+    background: #aaaaaa;
+    text-align: center;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    right: 35%;
+    top: 100px;
+    font-size: 25px;
+    color: #efefef;
+}
+
+.explain_part
+{
+    background-color:Silver;
+    font-size:large;
+    font-style:oblique;
+    }
+    
+    
+.effect_part {
+    width: 100%;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .effect_part .image-editor {
+        width: 70%;
+        height: 511px;
+        margin-left: 400px;
+    }
+
+/*******************************Specific Part**********************************/
+.showcase {
+    width:835px;
+    display: inline-block; /*stop the float*/
+    font-family: Arial;
+    color: #898989;
+    text-align: center;
+    margin:50px;
+}
+
+/*determine the width of the progress bar*/
+.showcase .container{
+    width:80%;
+}

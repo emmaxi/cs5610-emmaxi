@@ -1,0 +1,51 @@
+﻿
+.avatars {
+  margin: 40px auto;
+  width: 650px;
+  height: 400px;
+}
+
+h2, h2.emma
+{
+    color:Black;
+    font:260px/1.5 Helvetica, sans-serif;
+    float:left;
+}
+
+h2.emma
+{
+    background:url(ava1.jpg) -10px 60px no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height:300px;
+}
+
+h2.xi
+{
+    background: url(ava1.jpg) 10px 1px no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height:300px;
+}
+
+
+.masks, avatars {
+  width: 1000px;
+  height: 355px;
+  margin: 0 auto;
+}
+
+.masks img {
+  -webkit-mask-image: url(mask.jpg);
+  margin: 50px;
+  float: left;
+}
+
+.text {
+  color: white;
+  padding-top: 150px;
+}
+
+h3
+{
+    clear:both;}

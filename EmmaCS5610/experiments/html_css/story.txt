@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../experiments/html_css/story.txt 		What is Next?
+../../experiments/html_css/experiment1-1.htm										Experiment1-1
+../../experiments/html_css/experiment1-2.htm										Experiment1-2
+../../experiments/html_css/experiment1-3.htm										Experiment1-3
+../../experiments/html_css/experiment1-4.htm										Experiment1-4
+../../experiments/html_css/experiment1-5.htm										Experiment1-5

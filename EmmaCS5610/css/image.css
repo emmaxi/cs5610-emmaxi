@@ -1,0 +1,90 @@
+﻿p {
+    padding: 0;
+    margin: 0;
+}
+
+/*border*/
+.pic {
+  height: 267px;
+  width: 400px;
+  margin: 10px;
+  overflow: hidden;
+  border: 2px solid #111;
+  padding: 5px;
+   
+  -webkit-box-shadow: 5px 5px 5px #111;
+}
+
+/*Tilt*/
+.tilt {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+}
+ 
+.tilt:hover {
+  -webkit-transform: rotate(+4deg);
+     -moz-transform: rotate(+4deg);
+       -o-transform: rotate(+4deg);
+      -ms-transform: rotate(+4deg);
+}
+
+/*Zoomin*/
+.Zoomin img { 
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          display:block;
+}
+ 
+.Zoomin img:hover {
+  width: 500px;
+  height: 333px;
+}
+
+/*Morph*/
+.morph {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+         
+}
+ 
+.morph:hover {
+
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+         
+}
+
+
+/*Blur*/
+.blur img {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;         
+}
+ 
+.blur img:hover {
+  -webkit-filter: blur(5px);
+}
+
+
+/*Brighten*/
+.brighten img {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          
+}
+ 
+.brighten img:hover {
+  -webkit-filter: brightness(1.5);
+}

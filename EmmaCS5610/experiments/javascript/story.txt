@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../experiments/javascript/story.txt 		What is Next?
+../../experiments/javascript/experiment2-1.htm										Experiment2-1
+../../experiments/javascript/experiment2-2.htm										Experiment2-2
+../../experiments/javascript/experiment2-3.htm										Experiment2-3
+../../experiments/javascript/experiment2-4.htm										Experiment2-4
+../../experiments/javascript/experiment2-5.htm										Experiment2-5

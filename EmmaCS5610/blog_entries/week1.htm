@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>week1 blog</title>
+    <link rel="stylesheet" type="text/css" href="../css/blog.css" media="screen" />
+</head>
+<body>
+<h1>learn HTML5 and CSS3</h1>
+<p>the new version of HTML and CSS(HTML5,CSS3) is really a big change in our coding.</p>
+<p>I made five experiments this week:</p>
+<p>1. How to play a video in HTML</p>
+<p>2. How to play audio in HTML(with start,stop,increase and decrease volume with button)</p>
+<p>3. How to create shaped avatars</p>
+<p>core code in html:</p>
+<h3>&lt;div class=avatars &gt;<br />
+ &lt;h2 class=emma&gt;&amp;#10084;&lt;/h2&gt;<br />
+ &lt;h2 class=xi&gt;&amp;#9733;&lt;/h2&gt;<br />
+&lt;/div&gt;</h3>
+<p>core code in css:</p>
+<h3>h2.emma
+{
+    background:url(ava1.jpg) -10px 60px no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height:300px;
+}
+<br />
+h2.xi
+{
+    background: url(ava1.jpg) 10px 1px no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height:300px;
+}
+<br />
+.masks, avatars {
+  width: 1000px;
+  height: 355px;
+  margin: 0 auto;
+}
+<br />
+.masks img {
+  -webkit-mask-image: url(mask.jpg);
+  margin: 50px;
+  float: left;
+}</h3>
+<p>4. How to put vertical text on an image</p>
+<h3>tips: use table element</h3>
+<p>5. How to make css transaction effects</p>
+</body>
+</html>

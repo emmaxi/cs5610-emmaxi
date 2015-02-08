@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../experiments/bootstrap/story.txt 		What is Next?
+../../experiments/bootstrap/experiment3-1.htm										Experiment3-1
+../../experiments/bootstrap/experiment3-2.htm										Experiment3-2
+../../experiments/bootstrap/experiment3-3.htm										Experiment3-3
+../../experiments/bootstrap/experiment3-4.htm										Experiment3-4
+../../experiments/bootstrap/experiment3-5.htm										Experiment3-5

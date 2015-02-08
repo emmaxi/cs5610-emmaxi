@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Experiment 3-4</title>
+    <link href="../../css/progress.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../javascript/progress.js"></script>
+</head>
+<body style="margin:50px">
+<h1>How to use Bootstrap to embed video and show the progress bar?</h1><br />
+
+<div class="explain_part">
+<p>the embeded video will load itself, as the progress bar shows. when the page is ready, a window with successful information will popup</p>
+<p>when the animation of progress bar come to the end, the video will show on the page.</p>    
+ </div>  
+
+    <div class="effect_part">
+        <div class="showcase">
+            <div class="container">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                        <span class="sr-only">80% Complete</span>
+                    </div>
+                </div>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/u5KQQWlIgGc" frameborder="0" allowfullscreen></iframe>
+                </div>    
+            </div>
+        </div>
+    </div>
+
+<h2>core code and explain</h2>
+<p>first of all, import all necessary links for Bootstrap and JQuery</p>
+<p>second, crate a class named "progress" and then set the relative attributes. The special thing is that I use the class of "sr-only".</p>
+<p>when the loading is finished,embeded video will show on the page and allow the full screen pattern.</p>   
+<p>use the embed responsive pattern for video,the embed address of the video will generate by Youtube automatically</p>
+<p><code>&lt;div class=&quot;progress-bar progress-bar-danger&quot; role=&quot;progressbar&quot; aria-valuenow=&quot;0&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width:0%&quot;&gt;
+                        &lt;span class=&quot;sr-only&quot;&gt;80% Complete&lt;/span&gt;
+                    &lt;/div&gt;</code></p>
+<p><code>&lt;div class=&quot;embed-responsive embed-responsive-16by9&quot;&gt;
+                    &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/u5KQQWlIgGc&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+                &lt;/div&gt;  </code></p>
+<p>Besides,We can also set the loading speed by ourself in JQuery</p>
+<p><code>var interval = setInterval(function () { <br />
+        widthNum += 10; <br />
+        aria_valuenow += 10; <br />
+        if (widthNum &gt; 100) { <br />
+            clearInterval(interval); <br />
+            alert(&quot;Finished loading!&quot;) <br />
+            videoDiv.show(); <br />
+        } <br />
+        var width = widthNum + &apos;%&apos;; <br />
+        progressBar.css(&apos;width&apos;, width); <br />
+        progressBar.attr(&quot;aria-valuenow&quot;, aria_valuenow); <br />
+    }, 500);</code></p> 
+    <p>here we set it as 500</p>
+
+ <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/bootstrap/experiment3-4.htm" target="_blank">Experiment3-4 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/css/progress.css" target="_blank">Experiment3-4 Css Source</a><br />
+   <a href="../../fileview/Default.aspx?~/javascript/progress.js" target="_blank">Experiment3-4 JavaScript Source</a>
+  <h3>References:</h3>
+    <a href="http://www.w3schools.com/bootstrap/bootstrap_progressbars.asp" target="_blank">bootstrap in progressbars</a><br />
+    <a href="http://www.w3cplus.com/responsive/making-embedded-content-work-in-responsive-design.html" target="_blank"> W3Cplus responsive</a>
+    <br />
+    <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

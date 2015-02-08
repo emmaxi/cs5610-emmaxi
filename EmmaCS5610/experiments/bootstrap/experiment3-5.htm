@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment3-5</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="../../css/modal.css" rel="stylesheet"/>
+</head>
+<body style="margin:50px;">
+<h1>How to use Modal and Tooltip based on Boostrap's javascript?</h1>
+    <div class="effect_part">
+           <div class="container">
+
+                <!-- Button trigger modal -->
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Trigger Modal
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                            <!-- data-dismiss is a custom HTML5 data attribute. Here it is used to close the modal window -->
+                                <button type="button" class="close" data-dismiss="modal">
+                                <!--aria-hidden is true will keep the window hidden until the button is clicked -->
+                                 <span aria-hidden="true">&times;</span>
+                                 <span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Bootstrap Modal</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <p>Movie Show</p><br />
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/u5KQQWlIgGc" frameborder="0" allowfullscreen></iframe><br />
+                                <!-- data-toggle is used to show the tooltip -->
+                                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="See me See me!">Toggle Me</button>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<h2>core code and explain</h2><p>first of all, import Bootstrap</p><p>second, create a button to trigger the Modal</p><p><code>&lt;button class=&quot;btn btn-primary btn-lg&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;<br />
+                    Trigger Modal<br />
+                &lt;/button&gt;</code></p><p>then, tell the browser what's the Modal look like. Modal generally has three parts: modal-header,modal-body and modal-footer.The class modal fade makes the modal fade into and out of view.The id which in my case has the attribute myModal should be the same as the id I placed in the button.</p>   <p><code>&lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot; aria-hidden=&quot;true&quot;&gt;<br />
+                    &lt;div class=&quot;modal-dialog&quot;&gt;<br />
+                        &lt;div class=&quot;modal-content&quot;&gt;<br />
+
+                            &lt;div class=&quot;modal-header&quot;&gt;<br />
+                            &lt;!-- data-dismiss is a custom HTML5 data attribute. Here it is used to close the modal window --&gt;<br />
+                                &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;<br />
+                                &lt;!--aria-hidden is true will keep the window hidden until the button is clicked --&gt;<br />
+                                 &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;<br />
+                                 &lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;<br />
+                                &lt;/button&gt;<br />
+                                &lt;h4 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;Bootstrap Modal&lt;/h4&gt;<br />
+                            &lt;/div&gt;</code></p>
+<p>last,I embed the same video of experiment3-4 into the modal</p>
+<p><code>&lt;div class=&quot;modal-body&quot;&gt;<br />
+                                &lt;p&gt;Moive Show&lt;/p&gt;&lt;br /&gt;<br />
+                                &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/u5KQQWlIgGc&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;br /&gt;<br />
+                                &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;top&quot; title=&quot;See me See me!&quot;&gt;Toggle Me&lt;/button&gt;<br />
+                            &lt;/div&gt;</code></p>
+
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/bootstrap/experiment3-5.htm" target="_blank">Experiment3-5 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/css/modal.css" target="_blank">Experiment3-5 Css Source</a>
+  <h3>References:</h3>
+    <a href="http://www.w3cschool.cc/bootstrap/bootstrap-modal-plugin.html" target="_blank">bootstrap in Tooltips and Modal</a><br />
+ 
+    <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

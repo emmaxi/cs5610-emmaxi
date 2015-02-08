@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>week2 blog</title>
+    <link rel="stylesheet" type="text/css" href="../css/blog.css" media="screen" />
+</head>
+<body>
+<h1>learn Javascript and JQuery</h1>
+<p>JQuery is a Javascript library, which is greatly simplifies JavaScript programming and easy to learn</p>
+<p>I made five experiments this week:</p>
+<p>1. How to make a draggable elements in list</p>
+<p>2. How to create animation using JQuery</p>
+<p>3. How to resize image using JavaScript and HTML5</p>
+<p>core code in JavaScript</p>
+<h3>&lt;script&gt;
+         function sizechange() {
+            //Original height of the image in pixels
+            var img_height = 200;
+
+           // Get the current zoom value of the range control
+            var step = document.getElementById(&apos;zoomSelector&apos;).valueAsNumber;
+
+           // Calculate the percentage increase/decrease
+            var changedHeight = img_height * (1+ (step / 100));
+
+           //Set the new height to the image tag
+            document.getElementById(&apos;demo&apos;).height = changedHeight;
+
+           // Display the current zoom value to the user,the get the value of step from the system
+            document.getElementById(&apos;currentSize&apos;).innerText = step + &apos;%&apos;;
+           }
+        &lt;/script&gt;</h3>
+<p>4.How to create Accordion Widget</p>
+<h3>tips: use JQuery UI API</h3>
+<p>5. How to make image slider using JQuery</p>
+</body>
+</html>

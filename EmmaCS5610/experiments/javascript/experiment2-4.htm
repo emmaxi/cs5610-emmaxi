@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment2-4</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#accordion").accordion();
+        });
+    </script>
+</head>
+<body style="margin:50px;">
+<h1>How to create Accordion Widget using JQuery UI?</h1>
+<br />
+    <p>Click the Sections, to reveal data, with respect to that section.</p>
+
+    <div id="accordion">
+      <h3>Section 1</h3>
+      <div>
+        <p>
+        This is the content of Section 1
+        </p>
+      </div>
+      <h3>Section 2</h3>
+      <div>
+        <p>
+        This is the content of Section 2
+        </p>
+        <ul>
+          <li>First</li>
+          <li>Second</li>
+          <li>Third</li>
+        </ul>
+      </div>
+      <h3>Section 3</h3>
+      <div>
+        <p>
+        This is the content of Section 3
+        </p> 
+      </div>
+      <h3>Section 4</h3>
+      <div>
+        <p>
+        This is the content of Section 4
+        </p>
+        <p>
+        thank you~
+        </p>
+      </div>
+    </div>
+<h2>core code and explain</h2>
+<p >The List shown before is a set of headers. Each header is clickable</p>
+<p >Clicking a header will show relative information to that header</p>
+<p >While the data for that clicked-header is shown, the data analogous to other headers are hidden.</p>
+<p >These widgets can be used to structure data in our website, to specify information more clearly.</p>
+
+ <code style="color:Olive;">&lt;link rel=&quot;stylesheet&quot; href=&quot;//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css&quot;&gt;
+    &lt;script src=&quot;//code.jquery.com/jquery-1.10.2.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;//code.jquery.com/ui/1.11.2/jquery-ui.js&quot;&gt;&lt;/script&gt;</code>
+ <br />
+ <code style="color:Olive;">&lt;script&gt;
+        $(function () {
+            $(&quot;#accordion&quot;).accordion();
+        });
+    &lt;/script&gt;</code>
+ <br />
+<code style="color:Olive;">&lt;div id=&quot;accordion&quot;&gt;
+      &lt;h3&gt;Section 1&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;p&gt;
+        This is the content of Section 1
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;h3&gt;Section 2&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;p&gt;
+        This is the content of Section 2
+        &lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;First&lt;/li&gt;
+          &lt;li&gt;Second&lt;/li&gt;
+          &lt;li&gt;Third&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;h3&gt;Section 3&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;p&gt;
+        This is the content of Section 3
+        &lt;/p&gt; 
+      &lt;/div&gt;
+      &lt;h3&gt;Section 4&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;p&gt;
+        This is the content of Section 4
+        &lt;/p&gt;
+        &lt;p&gt;
+        thank you~
+        &lt;/p&gt;
+      &lt;/div&gt;</code>
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/javascript/experiment2-4.htm" target="_blank">Experiment2-4 Source</a>
+   
+  <h3>References:</h3>
+    <a href="http://jqueryui.com/accordion/" target="_blank">JQuery User Interface: Accordion</a>
+
+<footer>copy right by Xi Wang</footer>
+</body>
+</html>
