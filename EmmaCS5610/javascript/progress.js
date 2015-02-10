@@ -15,5 +15,5 @@ $(document).ready(function () {
         var width = widthNum + '%';
         progressBar.css('width', width);
         progressBar.attr("aria-valuenow", aria_valuenow);
-    }, 500);
+    }, 10);
 });

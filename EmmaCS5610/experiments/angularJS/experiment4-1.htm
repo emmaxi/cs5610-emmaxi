@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment 4-1</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+</head>
+<body style="margin:50px;">
+<h1>How to make the animation of search recommendation</h1><br />
+<p>In this experiment, after we type in some characters, the list of search recommendation will filter the results with an animation</p>
+    <div class="effect_part"> 
+       <div class="showcase"  ng-app="recommendation" ng-init="names=['w', 'we', 'web', 'web developer'];">
+            <script>
+                angular.module('recommendation', ['ngAnimate']);
+            </script>
+            <div class="well" style="margin-top: 30px; margin-left:250px; width: 200px; overflow: hidden; padding:30px;">
+                <form class="form-search">
+                    <div class="input-append">
+                        <input type="text" ng-model="search" class="search-query" placeholder="input web" style="width: 80px"/>
+                        <button type="submit" class="btn" style="color:Olive;"><b>Search</b></button>
+                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="repeat-animation" ng-repeat="name in names | filter:search">
+                            <a href="../../Default.aspx" style="color: #aaaaaa;">{{name}}</a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<h2>core code and explain</h2>
+<p>
+            To build this experiment, I add the abgular-animated.js from <strong>GOOGLE API</strong>.<br /><br />
+            This animation of search recommendation will show if the user input something in the search box. According to there imputs,
+            the recommendation changes. For example, if the user input "w", then the recommendation will be "w","we","web" and "web developer".
+            If the user input "we", then the recommendation will be "we","web" and "web developer"<br /><br />
+            Also, I used the Bootstrap to style the elements.<br />
+            The animation is implemented by CSS3 animation. <br /><br />
+            </p>
+<p><code>
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js&quot;&gt;&lt;/script&gt;<br />
+    &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.js&quot;&gt;&lt;/script&gt;<br />
+    &lt;link href=&quot;//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css&quot; rel=&quot;stylesheet&quot;/&gt;
+</code></p>
+
+<p>ng-app clearify the domain of AngularJS. ng-init allows us to set the initial variable values ​​before the program runs </p>
+<code>&lt;div class=&quot;showcase&quot;  ng-app=&quot;recommendation&quot; ng-init=&quot;names=[&apos;w&apos;, &apos;we&apos;, &apos;web&apos;, &apos;web developer&apos;];&quot;&gt;</code>
+
+<p>The angular.module() is a global place for creating, registering and retrieving Angular modules.When passed two or more arguments, a new module is created. If passed only one argument, an existing module (the name passed as the first argument to module) is retrieved</p>
+<p>ngAnimate is used to create animation</p>
+<code>&lt;script&gt;<br />
+                angular.module(&apos;recommendation&apos;, [&apos;ngAnimate&apos;]);<br />
+            &lt;/script&gt;</code>
+<p>The ngRepeat directive instantiates a template once per item from a collection. Each template instance gets its own scope, where the given loop variable is set to the current collection item, and $index is set to the item index or key.</p>
+<code>&lt;li class=&quot;repeat-animation&quot; ng-repeat=&quot;name in names | filter:search&quot;&gt;<br />
+                            &lt;a href=&quot;../../Default.aspx&quot; style=&quot;color: #aaaaaa;&quot;&gt;{{name}}&lt;/a&gt;<br />
+                        &lt;/li&gt;</code>
+
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/experiment4-1.htm" target="_blank">Experiment4-1 Html Source</a><br />
+  <h3>References:</h3>
+    <a href="https://docs.angularjs.org/api/ngAnimate" target="_blank">AngularJS ngAnimate</a><br />
+ 
+    <footer>Copyright by Xi Wang</footer>
+
+</body>
+</html>

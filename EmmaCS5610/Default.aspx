@@ -37,6 +37,7 @@
     <li><a href="story/index.htm?../experiments/story.txt" target="_blank">Experiments</a></ li>
     <li><a href="project/" target="_blank">Final Project</a></li>
     <li><a href="documentation/" target="_blank">Documentation</a></li>
+    <li><a href=" https://github.com/emmaxi/cs5610-emmaxi" target="_blank">My GitHub</a></li>
 </ul>
 <hr />
 

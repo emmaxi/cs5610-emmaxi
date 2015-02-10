@@ -2,3 +2,4 @@
 ../story/index.htm?../experiments/html_css/story.txt										Week1 - Html5_Css3 Experiments
 ../story/index.htm?../experiments/javascript/story.txt										Week2 - JavaScript Experiments
 ../story/index.htm?../experiments/bootstrap/story.txt										Week3 - Bootstrap Experiments
+../story/index.htm?../experiments/angularJS/story.txt										Week4 - AngularJS Experiments
