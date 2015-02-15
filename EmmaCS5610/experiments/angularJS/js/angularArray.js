@@ -1,6 +1,8 @@
-function arrayController($scope) {
+var app = angular.module("arrayController", []);
+
+app.controller("arrayController", function ($scope) {
     var boston = {
-        city: "Boston",
+        name: "Boston",
         country: "USA",
         temperature: "27",
         weather: "patchy light snow",
@@ -8,7 +10,7 @@ function arrayController($scope) {
         humidity: "86"
     };
     var beijing = {
-        city: "Beijing",
+        name: "Beijing",
         country: "China",
         temperature: "18",
         weather: "Sunny",
@@ -16,15 +18,15 @@ function arrayController($scope) {
         humidity: "85"
     };
     var baoji = {
-        city: "Baoji",
+        name: "Baoji",
         country: "China",
         temperature: "33",
         weather: "Sunny",
         wind: "5",
-        humidity: "35"
+        humidity: "3500"
     };
     var los = {
-        city: "Los Angeles",
+        name: "Los Angeles",
         country: "USA",
         temperature: "84",
         weather: "Sunny",
@@ -33,4 +35,4 @@ function arrayController($scope) {
     };
     var cities = [boston, beijing, baoji, los];
     $scope.cities = cities;
-}
+});

@@ -2,9 +2,153 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
-</head>
-<body>
+    <title>Experiment 4-3</title>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/angularHandle.js"></script>
 
+</head>
+<body class="container" ng-app="angularHandle">
+    <h1>How to use Angular Event Handlers</h1>
+    <div ng-controller="angularHandle">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Temperature</th>
+                    <th>Weather</th>
+                    <th>Wind</th>
+                    <th>Humidity</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="name" placeholder="City Name" />
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="country" placeholder="Country" />
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="temperature" placeholder="Temperature" />
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="weather" placeholder="Weather" />
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="wind" placeholder="Wind" />
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="humidity" placeholder="Humidity" />
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="add()">&nbsp Add &nbsp</button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr ng-repeat="city in cities | orderBy:'temperature'">
+                <td>{{city.name}}</td>
+                <td>{{city.country}}</td>
+                <td>{{city.temperature}}</td>
+                <td>{{city.weather}}</td>
+                <td>{{city.wind}}</td>
+                <td>{{city.humidity}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="delete(city)">Delete &nbsp</button>
+                    </td>
+                </tr>
+                <tr> <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>
+                        <button class="btn btn-warning" ng-click="deleteAll()">Delete All</button>
+                    </td>
+                </tr>
+
+            </tbody>
+            <tfoot><h1><b>City Weather Broadcast</b></h1></tfoot>
+        </table>
+    </div>
+
+    <hr />
+    <div>
+        <p>
+            The purpose of this experiment is to use event handlers of Angular to add/delete rows to/from the table we created in Experiment4-2.
+        </p>
+        <p>
+            First of all, we attach delete button to each row in the table:
+        </p>
+        <pre>
+            &lt;button class="btn-danger" ng-click="delete(city)"&gt;Delete&lt;/button&gt;
+        </pre>
+        <p>in the script, we need to write delete function to realize it. We delete the item according to its index,and use the function
+        of splice, we can also define how many items we want to delete from the start index already given.</p>
+        <pre>
+                $scope.delete = function (city) {
+                    var index = $scope.cities.indexOf(city);
+                    $scope.cities.splice(index,1);
+               };
+        </pre>
+        <p>Besides, I also make a button to delete all the items.It also use the function of splice,from 1 to a really big number</p>
+        <pre>
+                $scope.deleteAll = function () {
+                    $scope.cities.splice(0,1000000);
+                };
+        </pre>
+        <p>In order to add rows to the table, we need to add some input fields and the add button:</p>
+        <pre>
+                &lt;tr&gt;
+                    &lt;td&gt;
+                        &lt;input class=&quot;form-control&quot; ng-model=&quot;name&quot; placeholder=&quot;City Name&quot; /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input class=&quot;form-control&quot; ng-model=&quot;country&quot; placeholder=&quot;Country&quot; /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input class=&quot;form-control&quot; ng-model=&quot;temperature&quot; placeholder=&quot;Temperature&quot; /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input class=&quot;form-control&quot; ng-model=&quot;weather&quot; placeholder=&quot;Weahter&quot; /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input class=&quot;form-control&quot; ng-model=&quot;wind&quot; placeholder=&quot;Wind&quot; /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input class=&quot;form-control&quot; ng-model=&quot;humidity&quot; placeholder=&quot;Humidity&quot; /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;button class=&quot;btn-success&quot; ng-click=&quot;add()&quot;&gt;Add  &lt;/button&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+        </pre>
+        <p>then, add the add function in script:</p>
+        <pre>
+           $scope.add = function () {
+                var newCity = {
+                    name: $scope.name,
+                    country: $scope.country,
+                    temperature: $scope.temperature,
+                    weather: $scope.weather,
+                    wind: $scope.wind,
+                    humidity: $scope.humidity
+                };
+                $scope.cities.push(newCity);
+           };
+        </pre>
+    </div>
+    <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/experiment4-3.htm" target="_blank">Experiment4-3 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/js/angularHandle.js" target="_blank">Experiment4-3 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="http://www.w3schools.com/angular/" target="_blank">AngularJS</a><br />
+ 
+ <footer>Copyright by Xi Wang</footer>
 </body>
+
 </html>

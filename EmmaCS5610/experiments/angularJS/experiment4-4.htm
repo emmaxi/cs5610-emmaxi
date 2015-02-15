@@ -2,9 +2,109 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Experiments4-4</title>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/angularAPI.js"></script>
 </head>
-<body>
 
-</body>
+<body class="container" ng-app="angularAPI">
+    <h1>How to use AngularJS API</h1>
+    <div ng-controller="apiController">
+
+        <h2>Search Weather by City Name</h2>
+
+        <div class="input-group">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput city name" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Temperature</th>
+                    <th>Weather</th>
+                    <th>Wind</th>
+                    <th>Humidity</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr ng-repeat="city in cities">
+                <td>{{city.location}}</td>
+                <td>{{city.temperature}}</td>
+                <td>{{city.weather}}</td>
+                <td>{{city.wind}}</td>
+                <td>{{city.humidity}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="delete(city)">Delete &nbsp</button>
+                    </td>
+                </tr>
+                <tr> <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>&nbsp</td>
+                     <td>
+                        <button class="btn btn-warning" ng-click="deleteAll()">Delete All</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<hr />
+    <div>
+        <p>
+            The purpose of this experiment is to use AngularJS's API to access other people's database and then get their data.
+            Of course,this behavior is allowed by the data's owner. And the only way for us to get their database is using the
+            API.This experiment is based on the experiment4-3. User imput the name of a city, then the weather condition of it
+            will be displayed on the table below.
+        </p>
+        <p>
+            First of all, I create a input box and a button for users to input the city's name which they want to know the weather of
+        </p>
+        <pre>
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;input type=&quot;text&quot; ng-model=&quot;searchByName&quot; class=&quot;form-control&quot; placeholder=&quot;imput city name&quot;/&gt;
+                &lt;span class=&quot;input-group-btn&quot;&gt;
+                  &lt;button ng-click=&quot;search()&quot; class=&quot;btn btn-success&quot; type=&quot;button&quot;&gt;Search!&lt;/button&gt;
+                &lt;/span&gt;
+        &lt;/div&gt;
+        </pre>
+        <p>As we see above, when user click the "Search!" button, the function of search() will be called. Therefore, We need to create the function
+        of search() in JS file. I separate the whole URL into 3 parts, the most importent of them is part 2, city name which user imputted.
+        And then, if the search is successful, add the new city into cities.Every elements of the city will be assigned compatibly.</p>
+        <pre>
+                   $scope.search = function () {
+                        var url1 = "http://api.worldweatheronline.com/free/v1/weather.ashx?q="
+                        var city = $scope.searchByName
+                        var url2 = "&format=json&num_of_days=5&key=c325dbdb319be47d1411a23e18dea75806db50e6"
+                        var targetURL = url1 + city + url2
+                        
+                        $http.get(targetURL).success( function (data) {
+                                $scope.cities.push({
+                                    location: data.data.request[0].query,
+                                    temperature: data.data.current_condition[0].temp_F,
+                                    weather: data.data.current_condition[0].weatherDesc[0].value,
+                                    humidity: data.data.current_condition[0].humidity,
+                                    wind: data.data.current_condition[0].windspeedMiles
+                                });
+                            });
+                    };
+        </pre>
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/experiment4-4.htm" target="_blank">Experiment4-4 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/js/angularAPI.js" target="_blank">Experiment4-4 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="http://www.w3schools.com/angular/" target="_blank">AngularJS</a><br />
+    <a href="https://developer.worldweatheronline.com/page/documentation" target="_blank" class="link">World Weather Online API</a>
+
+ 
+ <footer>Copyright by Xi Wang</footer>
+ </body>
 </html>

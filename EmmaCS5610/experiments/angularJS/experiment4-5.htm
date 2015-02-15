@@ -2,9 +2,92 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Experiment4-5</title>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/imageList.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
-<body>
+<body style="margin:50px;">
+<h1>How to add several images into a list using AngularJS</h1>
+  <div class="container" ng-app="imageAngular"  ng-controller="itemController"">
+                <div class="upper_part">
+                    <div class="subcontainer">
+                        <input type="file" class="choose"/>                  
+                        <img class="preview" src=""/>
+                    </div>
+                     <input type="text" class="form-control" ng-model="designer_name" placeholder="Discription Here"/>
+                <span style="margin:[][][][50px]">
+                     <button class="btn btn-success" ng-click="addItem()">Add</button>
+                     <button class="btn btn-danger" ng-click="clearItems()">Delete All</button> 
+                 </span>                         
+                </div>
 
+                 <div class="lower_part">
+                    <div class="item_container" ng-repeat="i in items">
+                        <div class="item_text">{{i.designer}}</div>
+                        <img class="item_img" src="{{i.src}}" />
+                    </div>
+                </div>
+         </div>
+<hr/> 
+<p> In this experiment, we create a page which allow user to upload several images(one image a time),show the preview of 
+the image, and then allow user add a short discription to it. After all these finished, clicking the button of add, this 
+image will show on the page. User are able to upload several pages, so that each images will be displayed in a list.
+    Besides,we also offer the function of delete all the images at a time.
+</p> 
+<p> use this srcipt to get the preview of the images. This code will effect just when the file are ready.
+</p>
+<pre>
+$(document).ready(function () {
+    $('.choose').change(function () {
+          readURL(this);
+           });
+
+           function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.preview').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+</pre>
+<p> In my design, user can not just add a discription without upload a image.So when meet this error, the page will
+show an alert: please choose an image first. Otherwise,user can add an image successfully. And after it been uploaded,
+the input box of discription will be cleared. 
+</p>
+<pre>
+$scope.addItem = function () {
+                var currentItems = $scope.items;
+                var srcToAdd = $('.preview').attr("src");
+
+                if (srcToAdd.length < 1) {
+                    alert("Please choose an image first.");
+                } else {
+                        $scope.items.push({ src: $('.preview').attr("src"), designer: $scope.designer_name });
+                        $('.preview').attr("src", "");
+                        $scope.designer_name = "";
+                }
+            };
+</pre>
+<p>the last funtion is delete all images which are uploaded before. It's easy to realize.
+</p>
+<pre>
+$scope.clearItems = function () {
+                $scope.items = [];
+                $('.preview').attr("src", "");
+            };
+</pre>
+<hr/> 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/experiment4-5.htm" target="_blank">Experiment4-5 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/angularJS/js/imageList.js" target="_blank">Experiment4-5 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="http://www.w3schools.com/angular/" target="_blank">AngularJS</a><br />
+ <footer>Copyright by Xi Wang</footer>
 </body>
 </html>
