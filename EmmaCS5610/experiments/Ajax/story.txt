@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../experiments/Ajax/story.txt 		What is Next?
+../../experiments/Ajax/experiment5-1.htm										Experiment5-1
+../../experiments/Ajax/experiment5-2.htm										Experiment5-2
+../../experiments/Ajax/experiment5-3.htm										Experiment5-3
+../../experiments/Ajax/experiment5-4.htm										Experiment5-4
+../../experiments/Ajax/experiment5-5.htm										Experiment5-5

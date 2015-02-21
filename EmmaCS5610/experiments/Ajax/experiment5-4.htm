@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment5-4</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/ajax4.js"></script>
+</head>
+<body class="container">
+<h1>How to use Ajax get the relative information of the request?</h1>
+<br />
+<div class="show">
+<p id="result">This line will be replaced by the last modified information of the request</p>
+<p id="type">This line will be replaced by the sever type information of the request</p>
+<p id="content">This line will be replaced by the content type information of the request</p>
+<p id="length">This line will be replaced by the length information of the request</p>
+<button class="btn btn-success" onclick="loadXMLDoc('ajax1.txt')">Get request information</button>
+</div>
+<hr />
+        <p>
+            The purpose of this experiment is to used AJAX to get the last modified information of the header of request.
+        </p>
+        <p>
+            First of all, when the user click the button of "get last-modified", the line above will be replaced by the information 
+            we get about the appointed file.
+        </p>
+        <pre>
+           &lt;div class=&quot;show&quot;&gt;
+&lt;p id=&quot;result&quot;&gt;This line will be replaced by the last modified information of the request&lt;/p&gt;
+&lt;p id=&quot;type&quot;&gt;This line will be replaced by the sever type information of the request&lt;/p&gt;
+&lt;p id=&quot;content&quot;&gt;This line will be replaced by the content type information of the request&lt;/p&gt;
+&lt;p id=&quot;length&quot;&gt;This line will be replaced by the length information of the request&lt;/p&gt;
+&lt;button class=&quot;btn btn-success&quot; onclick=&quot;loadXMLDoc(&apos;ajax1.txt&apos;)&quot;&gt;Get request information&lt;/button&gt;
+&lt;/div&gt;
+        </pre>
+        <p>The getResponseHeader() function is used to return specific header information from a resource, like length, server-type, content-type, last-modified, etc.
+        For our experiment, we display this 4 attributes for an example.</p>
+        <pre>
+   function loadXMLDoc(url) {
+    var xmlhttp;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById('result').innerHTML = "Last modified: " + xmlhttp.getResponseHeader('Last-Modified');
+            document.getElementById('type').innerHTML = "Server Type: " + xmlhttp.getResponseHeader('server-type');
+            document.getElementById('content').innerHTML = "Content Type: " + xmlhttp.getResponseHeader('content-type');
+            document.getElementById('length').innerHTML = "Length: " + xmlhttp.getResponseHeader('length');
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+        </pre>
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/Ajax/experiment5-4.htm" target="_blank">Experiment5-4 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/Ajax/js/ajax4.js" target="_blank">Experiment5-4 Javascript Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/Ajax/ajax1.txt" target="_blank">Experiment5-4 Text file</a><br />
+  <h3>References:</h3>
+    <a href="http://www.w3schools.com/ajax/default.asp" target="_blank">Ajax</a><br />
+ <footer>Copyright by Xi Wang</footer>
+
+</body>
+</html>
