@@ -20,7 +20,7 @@
             The purpose of this experiment is to used AJAX to give suggestions according to the name of program language the user input.
         </p>
         <p>
-            First of all, when the user input the name of program language, the suggestion from our PHP file according to the name will be shown on the page.
+            First of all, when the user input the name of program language, the suggestion from our ASP file according to the name will be shown on the page.
         </p>
         <pre>
            function showHint(str) {
@@ -38,11 +38,11 @@
                 document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
               }
             }
-            xmlhttp.open("GET","ajax3.php?q="+ str, true);
+            xmlhttp.open("GET","ajax3.asp?q="+ str, true);
             xmlhttp.send();
          }
         </pre>
-        <p>then we get the string which is inputed by the user. Then jump into the ajax3.php file to check and match. If the string is not null, and we can match
+        <p>then we get the string which is inputed by the user. Then jump into the ajax3.asp file to check and match. If the string is not null, and we can match
         it with one of the elements in our array, then show this element. Else, show "no suggestion"</p>
         <pre>
             $q = $_REQUEST["q"];
@@ -68,7 +68,7 @@
   <h2>relative code</h2>
    <a href="../../fileview/Default.aspx?~/experiments/Ajax/experiment5-3.htm" target="_blank">Experiment5-3 Html Source</a><br />
    <a href="../../fileview/Default.aspx?~/experiments/Ajax/js/ajax3.js" target="_blank">Experiment5-3 Javascript Source</a><br />
-   <a href="../../fileview/Default.aspx?~/experiments/Ajax/ajax3.php" target="_blank">Experiment5-3 PHP file</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/Ajax/ajax3.asp" target="_blank">Experiment5-3 ASP file</a><br />
   <h3>References:</h3>
     <a href="http://www.w3schools.com/ajax/default.asp" target="_blank">Ajax</a><br />
  <footer>Copyright by Xi Wang</footer>

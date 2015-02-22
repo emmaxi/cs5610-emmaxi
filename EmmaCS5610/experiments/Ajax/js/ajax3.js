@@ -11,7 +11,7 @@ function showHint(str) {
                 document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET", "js/ajax3.php?q=" + str, true);
+        xmlhttp.open("GET", "ajax3.asp?q=" + str, true);
         xmlhttp.send();
     }
 }
