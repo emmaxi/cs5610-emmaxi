@@ -9,11 +9,10 @@
 <body class="container">
 <h1>How to retrieve data from XML file?</h1>
 <div class="show">
-
             <h2>Retrieve data from XML file</h2>
             <p><b>Movie Name: </b><span id="movie_name"></span></p>
             <p><b>Actor: </b><span id="actor"></span></p>
-            <p><b>Rank: </b><span id="plot_box"></span></p>
+            <p><b>Plot: </b><span id="plot_box"></span></p>
             <button class="btn btn-success" onclick="loadXMLDoc('ajax2.xml')">Get data from XML file</button>
 </div>
 <hr />
@@ -26,7 +25,20 @@
             First of all, There is a  function creates an XMLHttpRequest object, adds the function to be executed when the server response is ready, and sends the request off to the server.
         </p>
         <pre>
-           to be filled!!!!
+           function loadXMLDoc(url) {
+             var xmlhttp;
+             xmlhttp = new XMLHttpRequest();
+             xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                xmlDoc = xmlhttp.responseXML;
+            document.getElementById('movie_name').innerHTML = xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            document.getElementById('actor').innerHTML = xmlDoc.getElementsByTagName("actor")[0].childNodes[0].nodeValue;
+            document.getElementById('plot_box').innerHTML = xmlDoc.getElementsByTagName("AGE")[0].childNodes[0].nodeValue;
+            }
+           }
+           xmlhttp.open("GET", url, true);
+           xmlhttp.send();
+          }
         </pre>
         <p>When the server response is ready, nodes (elements) are extracted from the XML file, and it finally updates the person placeholder with XML data.
          When the user click the button "Get data from XML file", the whole precess are executed and render the data we retrived before.</p>

@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="gb2312"?>
-<bookstore>
-  <book genre="fantasy" ISBN="2-3631-4">
-    <FIRSTNAME>Oberon's Legacy</FIRSTNAME>
-    <LASTNAME>Corets, Eva</LASTNAME>
+<movie>
+  
     <AGE>The novels revolve around Harry Potter, an orphan who discovers at the age of eleven that he is a wizard, living within the ordinary world of non-magical people, known as Muggles.[9] The wizarding world is secret from the Muggle world, presumably to avoid persecution of witches and wizards. His ability is inborn, and such children are invited to attend an exclusive magic school that teaches the necessary skills to succeed in the wizarding world.[10] Harry becomes a student at Hogwarts School of Witchcraft and Wizardry, and it is here where most of the events in the series take place. As Harry develops through his adolescence, he learns to overcome the problems that face him: magical, social and emotional, including ordinary teenage challenges such as friendships, infatuation and exams, and the greater test of preparing himself for the confrontation in the real world that lies ahead</AGE>
-  </book>
-  <movie>
     <name>Harry Potter and the Philosopher's Stone</name>
     <actor>
-Daniel Radcliffe
+      Daniel Radcliffe; Emma Waston; Rupert Grint
     </actor>
-    <AGE>6.9</AGE>
-  </movie>
-</bookstore>
+
+</movie>
