@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Expriment6-2</title>
+</head>
+<body class="container">
+<h1>How to use NodeJS and OpenShift to create and publish website to the server?</h1>
+<a href="http://nodejs-emmaxi.rhcloud.com/index.htm" target="_blank">the show page of this experiment</a>
+  <hr />
+        
+    <p>This experiment is advanced NodeJS, which equals to 3 experiments at normal. Then main task is all about how to use OpenShift and Git to sync
+    the local side and the server side</p>
+        <p>
+           When it refers to the code about function realization and the information render,it's the same with experiments6-1.But, in order
+           to use OpenShift, it's different. Besides, the difference in code is shown below.
+        </p>
+        <pre>
+            var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+            var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+            app.listen(port, ip);
+        </pre>
+        <p>Secondly, learnd to use git in command line. Such as "git commit -a" , "git add .", "git push". Having problems in using git 
+        and OpenShift, but finally figured them out.</p>
+        
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/public/index.htm" target="_blank">Experiment6-2 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/serverApp1.js" target="_blank">Experiment6-1 Server Side Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/public/clientApp.js" target="_blank">Experiment6-1 Client Side Source</a><br />
+  <h3>References:</h3>
+    <a href="www.openshift.com" target="_blank">Express framework</a><br />
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

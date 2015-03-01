@@ -1,0 +1,3 @@
+../../story/whatisnext.htm?../experiments/NodeJS/story.txt 		What is Next?
+../../experiments/NodeJS/experiment6-1.htm							            Experiment6-1(equals to 2 experiments at normal)
+../../experiments/NodeJS/experiment6-2.htm										Experiment6-2(equals to 3 experiments at normal)

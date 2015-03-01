@@ -4,3 +4,4 @@
 ../story/index.htm?../experiments/bootstrap/story.txt										Week3 - Bootstrap Experiments
 ../story/index.htm?../experiments/angularJS/story.txt										Week4 - AngularJS Experiments
 ../story/index.htm?../experiments/Ajax/story.txt                                            Week5 - Ajax Experiments
+../story/index.htm?../experiments/NodeJS/story.txt                                            Week6 - NodeJS Experiments
