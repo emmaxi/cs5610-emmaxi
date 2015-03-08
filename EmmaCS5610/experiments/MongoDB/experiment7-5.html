@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment7-5</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<h1>How to use mongodb and mongoose to add date in openshift?</h1>
+<h3>Test Here:</h3>
+<a href="http://nodejs-emmaxi.rhcloud.com/index.html" target="_blank">the show page of this experiment(Include notes)</a>
+<hr />
+        <p>
+            The purpose of this experiment is to use MongoDB/mongoose to add data in openshift.
+        </p>
+        <p>
+            First of all,we open nodejs,mongodb and mongoDB. Then, connect the mongodb and give the URL
+        </p>
+        <pre>
+            var express = require('express');
+            var app = express();
+
+            var bodyParser = require('body-parser');
+            var multer = require('multer');
+            var mongoose = require('mongoose');
+
+            app.use(bodyParser.json());
+            app.use(bodyParser.urlencoded({extended: true}));
+            app.use(multer());
+            app.use(express.static(__dirname + '/public'));
+
+            var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/weather';
+            mongoose.connect(connectionString);
+        </pre>
+        <p>Secondly, implement the front-end page and the relative code in js file. Including add city into mongodb.</p>
+        <pre>
+           var CitySchema = new mongoose.Schema({
+            name: String,
+            country: String,
+            temperature: String,
+            weather: String,
+            wind: String,
+            humidity: String,
+            events:[EventSchema]
+            },{collection: 'city'});
+            
+            var CityModel = mongoose.model('CityModel', CitySchema);
+        </pre>
+        <p>Last, redefine the get,post,put,delete method in server side</p>
+        <pre>
+        //create city
+        app.post("/city", function(req,res) {
+        var city1 = new CityModel(req.body);
+        city1.save(function (err,doc) {
+        CityModel.find(function (err,data) {
+        res.json(data);
+            }); 
+        });  
+    });
+        </pre>
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/MongoDB/Experiment7-5.html" target="_blank">Experiment7-5 Html Source</a><br />
+  <h3>References:</h3>
+    <a href="https://www.openshift.com/" target="_blank">OpenShift</a><br />
+    <a href="http://www.mongodb.org/" target="_blank">MongoDB</a><br />
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>
