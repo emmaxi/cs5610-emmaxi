@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration Page</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js" charset="UTF-8"></script>
+    <link type="text/css" href="css/register.css" rel="Stylesheet" />
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/registerValidation.js"></script>
+
+</head>
+<body>
+<div class="main">
+		<div class="register-form">
+			<h1>Register Leave Form</h1>
+			<div class="head"><img src="images/user-image.png" alt=""/></div>
+            <!--allow user to register this time-off apllication form. User should input their username,password
+            and valid company email address-->
+			<form id="form">
+               <div class="control-group">
+                    <label for="userName" class="col-sm-2 control-label">Please input your username:</label>
+                    <div class="controls">
+				        <input type="text" id="userName"  onblur="username()" >
+                    </div>
+              </div>
+
+                <div class="control-group">
+                    <label for="passwordR" class="col-sm-2 control-label">Please input the password:</label>
+                    <div class="controls">
+                        <input type="password" id="passwordR" onblur="password()">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="re-password" class="col-sm-2 control-label">Please confirm the password:</label>
+                    <div class="controls">
+                        <input type="password" id="re-password" onblur="confirmPassword()">
+                    </div>
+                </div>
+
+                <!--the check of the email address is when the imput lose the focus,so when finished input the 
+                email, please click other place to see the result of check email-->
+                <div class="control-group">
+                    <label for="email" class="col-sm-2 control-label">Please input your email:</label>
+                    <div class="controls">
+                        <input type="email" id="email" onblur="checkEmail()">
+                    </div>
+                </div>
+                <button class="submit" type="submit" onclick="register();return false;">Register</button>   
+		</form>
+		</div>
+	</div>
+</body>
+</html>

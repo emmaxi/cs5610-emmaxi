@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Request Leave Form Page</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js" charset="UTF-8"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/leaveForm.js"></script>
+</head>
+<body class="container">
+<div class="requirement">
+<br />
+<span style="color:#FFB90F;font-size:300%;font-family: 'Open Sans', sans-serif;"><strong>APPLICATION FOR VACATION,PERSONAL,SICK LEAVE</strong></span><br /><br />
+<ol>
+  <li><p class="text-left">Fill out this form, have it signed by your supervisor, and forward to the attention of Human Resources.</p></li>
+  <li><p class="text-left"><strong>ADVANCE VACATION PAY CAN ONLY BE GRANTED FOR A MINIMUM OF ONE WEEK'S PAY.</strong></p></li>
+  <li><p class="text-left">If advance pay is requested, this form <em>must</em> be received by Human Resources two weeks in advance.</p></li>
+</ol> 
+</div>
+<hr />
+
+<!--Base information for the staff who is going to ask for time off-->
+<form role="form" class="dl-horizontal" >
+    <!--Allow user to input their name-->
+    <div class="Base-information">
+        <label for="name" class="col-sm-2 control-label">Name:</label>
+        <div class="col-sm-10">
+            <input type="text" id="name" placeholder="input your name" />
+        </div>
+    </div>
+    <!--Allow user to input their department-->
+    <div class="Base-information">
+        <label for="department" class="col-sm-2 control-label">Department:</label>
+        <div class="col-sm-10">
+            <input type="text" id="department" placeholder="input your department" />
+        </div>
+    </div>
+    <!--Allow user to input their location-->
+    <div class="Base-information">
+        <label for="location" class="col-sm-2 control-label">Location:</label>
+        <div class="col-sm-10">
+            <input type="text" id="location" placeholder="input your location" />
+        </div>
+    </div>
+    <!--Allow user to input their telephone/extension-->
+    <div class="Base-information">
+        <label for="tel" class="col-sm-2 control-label">Telephone/Extension:</label>
+        <div class="col-sm-10">
+        <input type="text" id="tel" placeholder="input your telephone" /><br />
+        </div>
+    </div>
+</form>
+
+<hr />
+<!--Allow user to choice the reason of asking for leave, only one reason can be selected at the same time-->
+<div class="container">
+<h3><strong>I here by apply for the following leave(check one only)</strong></h3>
+    <label class="checkbox"> 
+        <input type="radio" name="reason" id="vacation" value="Vacation"> Vacation
+    </label>
+    <label class="checkbox">
+        <input type="radio" name="reason" id="personal" value="Personal"> Personal
+    </label>
+    <label class="checkbox">
+        <input type="radio" name="reason" id="sick" value="Sick"> Sick
+    </label>
+    <label class="checkbox">
+        <input type="radio" name="reason" id="other" value="other"> Other(Explain)
+    </label>
+    <textarea class="form-control " rows="2"></textarea>
+</div>
+<hr /><br />
+
+<!--The specific form for leaving.including day,month,year and how long it will last-->
+<div id="leave-form" class="table-responsive">
+<table class="table table-bordered table-hover" id="form">
+    <thead>
+        <tr>
+            <th>LEAVE</th>
+            <th>MONTH</th>
+            <th>DAY</th>
+            <th>YEAR</th>
+            <th>TOTAL#</th>
+            <th>HRS/DAYS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BEGINNING</td>
+            <td>
+                <input type="month" class="form-control" />
+            </td>
+            <td><input type="date" class="form-control" /></td>
+            <td><input type="text" class="form-control" /></td>
+            <td rowspan="2"></td>
+            <td rowspan="2">
+                <div>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="dayOrHour" id="hours"> HOURS
+                    </label><br /><br />
+                    <label class="checkbox-inline">
+                        <input type="radio" name="dayOrHour" id="days"> DAYS
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>ENDING</td>
+            <td>
+                <input type="month" class="form-control" />
+            </td>
+            <td><input type="date" class="form-control" /></td>
+            <td><input type="text" class="form-control" /></td>
+        </tr>
+        <tr>
+        <!--Three buttons for uesr to operate. Add button is to add one more leave form. Submit button is to confirm the content in the form.
+        And cancel button is to delete this leaving form and cancel the application-->
+           <td colspan="6">
+               <button type="button" id="add_leave" class="btn btn-success pull-right add_leave">
+                   <span class="glyphicon glyphicon-plus"></span>
+               </button>
+               <button type="button" id="submit_leave"class="btn btn-primary pull-right submit_leave">
+                   <span class="glyphicon glyphicon-ok"></span>
+               </button>
+               <button type="button" id="cancel_leave"class="btn btn-danger pull-right cancel">
+                   <span class="glyphicon glyphicon-remove"></span>
+               </button>
+           </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<hr /><br />
+<!--It's a table for HR, HR will make decision and record here.-->
+<label class="alert-info"><h4>DO NOT FILL IN BELOW THIS LINE -- FOR HR USE ONLY</h4></label><br />
+<table class="table table-bordered table=striped" id="hr">
+<thead>
+    <tr>
+        <td>VAC.</td>
+        <td>SICK</td>
+        <td>PL</td>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><input type="text" class="form-control" id="vac"/></td>
+        <td><input type="text" class="form-control" id="sickHR"/></td>
+        <td><input type="text" class="form-control" id="pl"/></td>
+    </tr>
+</tbody>
+</table>
+
+<div class="form-group col-lg-4 pull-right">
+<label class="alert-success">LEAVE AVAILABLE AS OF:</label>
+<input type="date" class="form-control" />
+</div>
+
+</body>
+</html>
