@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+    <title>experiment9-4</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+    
+    <!-- D3.Js Import -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <!-- self defined files import-->
+    <link rel="stylesheet" type="text/css" href="css/exp9-4.css" />
+</head>
+<body class="container">
+<h1>How to create bar chart and tips using D3.js?</h1>
+
+<div class = "container well">
+
+    <svg id="grapharea" width="960" height="500"
+      viewBox="0 0 960 600"
+      preserveAspectRatio="xMidYMid">
+    </svg>
+
+    
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="js/exp9-4.js" type="text/javascript"></script>
+
+    </div>
+    <p>
+      In this experiments ,we use D3.js to build a bar chart according to the given data. Besides, tips of every bar will
+      show above. This time, we use the frequency of every letters in alphabet.
+    </p>
+    <p>The same as other experiments, we need to import the supporting files at the very beginning.</p>
+    <pre>
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;&gt;
+    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/exp9-4.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    </pre>
+    <p>And then ,import the data files. 
+    </p>
+    <pre>
+        letter	frequency
+        A	.08167
+        B	.01492
+        C	.02780
+        D	.04253
+        E	.12702
+        F	.02288
+        G	.02022
+        H	.06094
+        I	.06973
+        J	.00153
+        K	.00747
+        L	.04025
+        M	.02517
+        N	.06749
+        O	.07507
+        P	.01929
+        Q	.00098
+        R	.05987
+        S	.06333
+        T	.09056
+        U	.02758
+        V	.01037
+        W	.02465
+        X	.00150
+        Y	.01971
+        Z	.00074
+    </pre>
+    <p>The last but the most important thing is the javascript code of rendder it.</p>
+    <pre>
+      var margin = { top: 40, right: 20, bottom: 30, left: 40 },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function (d) {  //define the tips for every bar.
+      return "<strong>Frequency:</strong> <span style='color:olive'>" + d.frequency + "</span>";
+  })
+
+  var svg = d3.select("#grapharea").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+svg.call(tip);
+
+d3.tsv("barChartData.tsv", type, function (error, data) {
+    x.domain(data.map(function (d) { return d.letter; }));
+    y.domain([0, d3.max(data, function (d) { return d.frequency; })]);
+
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Frequency");
+
+    svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function (d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function (d) { return y(d.frequency); })
+      .attr("height", function (d) { return height - y(d.frequency); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+
+});
+
+function type(d) {
+    d.frequency = +d.frequency;
+    return d;
+}
+    </pre>
+
+    <hr/>
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/Data_Visualization/Experiment9-4.html" target="_blank">Experiment9-4 Html Source</a><br />
+   <p >The Graph shown above is constructed from a file that can be found <a href="barChartData.tsv">HERE</a>.<br/>
+  
+  <h3>References:</h3>
+    <a href="http://d3js.org/" target="_blank">D3.js website</a><br />
+ <footer>Copyright by Xi Wang</footer>
+
+
+</body>
+</html>

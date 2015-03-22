@@ -1,0 +1,19 @@
+ .counties {
+      fill: none;
+    }
+
+    .states {
+      fill: none;
+      stroke: #fff;
+      stroke-linejoin: round;
+    }
+
+    .q0-9 { fill:rgb(0,251,265); }
+    .q1-9 { fill:rgb(0,235,257); }
+    .q2-9 { fill:rgb(0,219,249); }
+    .q3-9 { fill:rgb(0,202,235); }
+    .q4-9 { fill:rgb(0,174,224); }
+    .q5-9 { fill:rgb(0,146,208); }
+    .q6-9 { fill:rgb(0,113,191); }
+    .q7-9 { fill:rgb(0,81,166); }
+    .q8-9 { fill:rgb(0,48,117); }

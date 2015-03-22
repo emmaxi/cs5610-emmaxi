@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>experiment9-2</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    
+    <!-- D3.Js Import -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <style>
+
+      .link {
+        stroke: #000;
+        stroke-width: 1.5px;
+      }
+
+      .node {
+        cursor: move;
+        fill: #ccc;
+        stroke: #000;
+        stroke-width: 1.5px;
+      }
+
+      .node.fixed {
+        fill: #f00;
+      }
+
+      text {
+        font: 10px sans-serif;
+      } 
+    </style>
+</head>
+<body class="container">
+    <div class="container">
+      <h1>How to create draggable nodes tree according to given data?</h1>
+      <p class="lead">Draggable Graph</p>
+    </div>
+
+    <div class = "container well">
+    	<p>Drag the nodes around, to see what happens...</p>
+            <svg id="grapharea" width="960" height="500"
+          viewBox="0 0 960 500"
+          preserveAspectRatio="xMidYMid">
+                                    </svg>
+
+    <script>
+        //------------------D3 Script *Starts* -------------------------
+        var graphArea = $("#grapharea");
+        var targetWidth = graphArea.parent().width();
+        var aspect = 960 / 500;
+
+        var width = targetWidth,
+        height = targetWidth / aspect;
+
+        var force = d3.layout.force()
+        .size([width, height])
+        .charge(-400)
+        .linkDistance(40)
+        .on("tick", tick);
+
+        var drag = force.drag()
+        .on("dragstart", dragstart);
+
+        var svg = d3.select("#grapharea").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+        var link = svg.selectAll(".link"),
+        node = svg.selectAll(".node");
+
+        d3.json("graph.txt", function (error, graph) {
+            force
+          .nodes(graph.nodes)
+          .links(graph.links)
+          .start();
+
+            link = link.data(graph.links)
+        .enter().append("line")
+          .attr("class", "link");
+
+            node = node.data(graph.nodes)
+        .enter().append("circle")
+          .attr("class", "node")
+          .attr("r", 12)
+          .on("dblclick", dblclick)
+          .call(drag);
+        });
+
+        function tick() {
+            link.attr("x1", function (d) { return d.source.x; })
+          .attr("y1", function (d) { return d.source.y; })
+          .attr("x2", function (d) { return d.target.x; })
+          .attr("y2", function (d) { return d.target.y; });
+
+            node.attr("cx", function (d) { return d.x; })
+          .attr("cy", function (d) { return d.y; });
+        }
+
+
+        function dblclick(d) {
+            d3.select(this).classed("fixed", d.fixed = false);
+        }
+
+        function dragstart(d) {
+            d3.select(this).classed("fixed", d.fixed = true);
+        }
+        //------------------D3 Script *Ends*-------------------------
+</script>
+
+    </div>
+    <p>
+            The purpose of this experiment is to use given data to create a draggable node tree.
+        </p>
+         <p>
+        And,it is not only draggable, you can freeze the nodes (tweakable), and then by double clicking them again you can release them to their former state. </p>
+        <p>If a node is froozen, it's color will change into red, and become undraggable. After double click, the color changes back and will be draggable again.</p>
+        <p>
+            First of all,import the D2.js file and the other dependent files(such as angularJS and JQuery).
+        </p>
+        <pre>
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;&gt;
+    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js&quot;&gt;&lt;/script&gt;
+    
+    &lt;!-- D3.Js Import --&gt;
+    &lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
+         </pre>
+         <p>Then, create the data file in JSON format.</p>
+         <pre>
+                 {
+          &quot;nodes&quot;: [
+            {&quot;x&quot;: 469, &quot;y&quot;: 410},
+            {&quot;x&quot;: 493, &quot;y&quot;: 364},
+            {&quot;x&quot;: 442, &quot;y&quot;: 365},
+            {&quot;x&quot;: 467, &quot;y&quot;: 314},
+            {&quot;x&quot;: 477, &quot;y&quot;: 248},
+            {&quot;x&quot;: 425, &quot;y&quot;: 207},
+            {&quot;x&quot;: 402, &quot;y&quot;: 155},
+            {&quot;x&quot;: 369, &quot;y&quot;: 196},
+            {&quot;x&quot;: 350, &quot;y&quot;: 148},
+            {&quot;x&quot;: 539, &quot;y&quot;: 222},
+            {&quot;x&quot;: 594, &quot;y&quot;: 235},
+            {&quot;x&quot;: 582, &quot;y&quot;: 185},
+            {&quot;x&quot;: 633, &quot;y&quot;: 200}
+          ],
+          &quot;links&quot;: [
+            {&quot;source&quot;:  0, &quot;target&quot;:  1},
+            {&quot;source&quot;:  1, &quot;target&quot;:  2},
+            {&quot;source&quot;:  2, &quot;target&quot;:  0},
+            {&quot;source&quot;:  1, &quot;target&quot;:  3},
+            {&quot;source&quot;:  3, &quot;target&quot;:  2},
+            {&quot;source&quot;:  3, &quot;target&quot;:  4},
+            {&quot;source&quot;:  4, &quot;target&quot;:  5},
+            {&quot;source&quot;:  5, &quot;target&quot;:  6},
+            {&quot;source&quot;:  5, &quot;target&quot;:  7},
+            {&quot;source&quot;:  6, &quot;target&quot;:  7},
+            {&quot;source&quot;:  6, &quot;target&quot;:  8},
+            {&quot;source&quot;:  7, &quot;target&quot;:  8},
+            {&quot;source&quot;:  9, &quot;target&quot;:  4},
+            {&quot;source&quot;:  9, &quot;target&quot;: 11},
+            {&quot;source&quot;:  9, &quot;target&quot;: 10},
+            {&quot;source&quot;: 12, &quot;target&quot;: 9}
+          ]
+        }
+         </pre>
+         <p>Then,render the data file into tree nodes.</p>
+         <pre>
+         var graphArea = $(&quot;#grapharea&quot;);
+        var targetWidth = graphArea.parent().width();
+        var aspect = 960 / 500;
+
+        var width = targetWidth,
+        height = targetWidth / aspect;
+
+        var force = d3.layout.force()
+        .size([width, height])
+        .charge(-400)
+        .linkDistance(40)
+        .on(&quot;tick&quot;, tick);
+
+        var drag = force.drag()
+        .on(&quot;dragstart&quot;, dragstart);
+
+        var svg = d3.select(&quot;#grapharea&quot;).append(&quot;svg&quot;)
+        .attr(&quot;width&quot;, width)
+        .attr(&quot;height&quot;, height);
+
+        var link = svg.selectAll(&quot;.link&quot;),
+        node = svg.selectAll(&quot;.node&quot;);
+
+        d3.json(&quot;graph.txt&quot;, function (error, graph) {
+            force
+          .nodes(graph.nodes)
+          .links(graph.links)
+          .start();
+
+            link = link.data(graph.links)
+        .enter().append(&quot;line&quot;)
+          .attr(&quot;class&quot;, &quot;link&quot;);
+
+            node = node.data(graph.nodes)
+        .enter().append(&quot;circle&quot;)
+          .attr(&quot;class&quot;, &quot;node&quot;)
+          .attr(&quot;r&quot;, 12)
+          .on(&quot;dblclick&quot;, dblclick)
+          .call(drag);
+        });
+
+        function tick() {
+            link.attr(&quot;x1&quot;, function (d) { return d.source.x; })
+          .attr(&quot;y1&quot;, function (d) { return d.source.y; })
+          .attr(&quot;x2&quot;, function (d) { return d.target.x; })
+          .attr(&quot;y2&quot;, function (d) { return d.target.y; });
+
+            node.attr(&quot;cx&quot;, function (d) { return d.x; })
+          .attr(&quot;cy&quot;, function (d) { return d.y; });
+        }
+
+
+        function dblclick(d) {
+            d3.select(this).classed(&quot;fixed&quot;, d.fixed = false);
+        }
+
+        function dragstart(d) {
+            d3.select(this).classed(&quot;fixed&quot;, d.fixed = true);
+        }
+         </pre>
+
+
+
+   <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/Data_Visualization/Experiment9-2.html" target="_blank">Experiment9-2 Html Source</a><br />
+   <p >The Graph shown above is constructed from a JSON file that can be found <a href="graph.txt">HERE</a>.<br/>
+  <h3>References:</h3>
+    <a href="http://d3js.org/" target="_blank">D3.js website</a><br />
+ <footer>Copyright by Xi Wang</footer>
+
+
+	<!-- USE Hosted Angular Script -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+
+</body>
+
+</html>
