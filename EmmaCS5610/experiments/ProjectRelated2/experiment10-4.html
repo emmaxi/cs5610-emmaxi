@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment10-4</title>
+     <link type="text/css" href="css/login.css" rel="Stylesheet" />
+    <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+<h1>Login Page</h1>
+<div class="main">
+		<div class="login-form">
+			<h1>Login Leave Form</h1>
+			<div class="head"><img src="images/user-image.png" alt=""/></div>
+			<form>
+				<input type="text" class="text" value="UserName" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'UserName';}" />
+				<input type="password" value="" />
+                <button class="submit" onclick="login();return false;">Login</button>
+				<p><a href="#">Forget Password?</a>&nbsp&nbsp<a href="register.html">Register!</a></p>         
+			</form>   
+		</div>	
+	</div>
+
+<p>It's the alternative login page for my project.I realized the respnsive design.</p>
+<pre>
+    /*-----start-responsive-design------*/
+@media (max-width:1440px){
+	.login-form {
+	width:30%;
+	margin: 11% auto 4% auto;
+	}
+	.main h1 {
+	padding-top: 23%;
+	}
+}
+@media (max-width:1366px){
+	.login-form {
+	width: 32%;
+	margin: 10% auto 4% auto;
+	}
+}
+</pre>
+<p>Besides, also defined the style of other elements, such as submit button, the input box</p>
+<pre>
+    input[type="text"], input[type="password"]{
+	text-align:left;
+	position: relative;
+	width:92%;
+	padding:3%;
+	background:#D3D3D3;
+	margin-bottom: 6%;
+	font-family: 'Open Sans', sans-serif;
+	color: #676767;
+	font-weight:600;
+	font-size: 16px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	border:1px solid #DED6D6;
+	-webkit-appearance:none;
+}
+ input[type="text"]:hover, input[type="password"]:hover{
+ 	border:1px solid #949494;
+	transition:0.5s;
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-o-transition:0.5s;
+	-ms-transition:	0.5s;
+ 	
+ }
+
+.submit{
+	width: 99%;
+	padding: 3%;
+	margin-bottom: 8%;
+	background: #21A957;
+	font-family: 'Open Sans', sans-serif;
+	color: #ECECEC;
+	box-shadow: inset 0px 0px 10px #666464;
+	-webkit-text-shadow: 0px 0px 3px #000;
+	-moz-text-shadow: 0px 0px 3px #000;
+	-o-text-shadow: 0px 0px 3px #000;
+	-ms-text-shadow: 0px 0px 3px #000;
+	font-size: 20px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	font-weight:500;
+	border-radius: 5px;
+	transition: 0.5s;
+	-webkit-appearance:none;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+}
+.submit:hover{
+	background:#128A42;
+	color:#fff;
+}
+</pre>
+
+<hr />
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/experiment10-4.html" target="_blank">Experiment10-4 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/js/login.js" target="_blank">Experiment10-4 Javascript Source</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

@@ -1,6 +1,0 @@
-../../story/whatisnext.htm?../experiments/Data_Visualization/story.txt 		What is Next?
-../../experiments/Data_Visualization/experiment9-1.html										Experiment9-1
-../../experiments/Data_Visualization/experiment9-2.html										Experiment9-2
-../../experiments/Data_Visualization/experiment9-3.html										Experiment9-3
-../../experiments/Data_Visualization/experiment9-4.html										Experiment9-4
-../../experiments/Data_Visualization/experiment9-5.html										Experiment9-5

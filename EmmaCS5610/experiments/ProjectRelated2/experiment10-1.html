@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment10-1</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+   
+    <script type="text/javascript" src="js/apiInformation.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body class="container" ng-app="api">
+<div ng-controller="apiController">
+
+               
+                <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Summary</th>
+                    <th>Calories</th>
+                    <th>Level</th>
+                    <th>CookingTime</th>
+                    <th>KeyIngredients</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr ng-repeat="recipe in recipes">
+                 <td>{{recipe.label}}</td>
+                 <td>{{recipe.summary}}</td>
+                <td>{{recipe.calories}}</td>
+                <td>{{recipe.level}}</td>
+                 <td>{{recipe.cookingTime}}</td>
+                <td>{{recipe.keyIngredients}}</td>
+               
+                
+                </tr>
+            </tbody>
+        </table>
+</div>
+<hr />
+<p>In this expriment, I'd like to decide what will be shown on my resultInformation page.Will design detailed page later</p>
+<pre>
+ &lt;th&gt;Label&lt;/th&gt;
+                    &lt;th&gt;Summary&lt;/th&gt;
+                    &lt;th&gt;Calories&lt;/th&gt;
+                    &lt;th&gt;Level&lt;/th&gt;
+                    &lt;th&gt;CookingTime&lt;/th&gt;
+                    &lt;th&gt;KeyIngredients&lt;/th&gt;
+</pre>
+
+<hr />
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/experiment10-1.html" target="_blank">Experiment10-1 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/js/apiInformation.js" target="_blank">Experiment10-1 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="https://developer.edamam.com" target="_blank">API website</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

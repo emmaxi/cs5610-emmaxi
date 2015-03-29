@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment3</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+   
+    <script type="text/javascript" src="js/apiResultShow.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container" ng-app="api">
+<h1>Show API Result</h1>
+<div ng-controller="apiController">
+<div class="input-group">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput recipe name or ingredient" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+</div>
+               
+<hr />
+
+<p>The purpose of this experiments is to get specific results from other web API. The format of data is JSONP.</p>
+<p>Using API ID,API key and the key word user given to create a target URL.</p>
+<pre> var url1 = "https://api.edamam.com/search?q=";
+        var keyword = $scope.searchByName;
+        var recipes = [];
+        $scope.recipes = recipes;
+        var url2 = "&app_id=7ae78f96&app_key=62b1961b12d7e4b28ad90b40854bf572";
+        var targetURL = url1 + keyword + url2;</pre>
+
+<p>Ask the web api to transport data in JSONP format.And if successfully get the data, show get message.</p>
+<pre>
+    $.ajax({
+            dataType: 'jsonp',
+            url: targetURL,
+            success: function (response) {
+              
+                console.log(response);
+
+                $scope.recipes = response.hits;
+    
+                alert("got data!"+ $scope.recipes);
+            }
+        })
+</pre>
+</div>
+<hr />
+ <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/experiment10-3.html" target="_blank">Experiment10-3 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/js/apiResultShow.js" target="_blank">Experiment10-3 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="https://developer.edamam.com" target="_blank">API website</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>
