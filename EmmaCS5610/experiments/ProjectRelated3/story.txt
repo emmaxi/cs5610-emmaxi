@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../experiments/ProjectRelated3/story.txt 		What is Next?
+../../experiments/ProjectRelated3/experiment11-1.html										Experiment11-1
+../../experiments/ProjectRelated3/experiment11-2.html										Experiment11-2
+../../experiments/ProjectRelated3/experiment11-3.html										Experiment11-3
+../../experiments/ProjectRelated3/experiment11-4.html										Experiment11-4
+../../experiments/ProjectRelated3/experiment11-5.html										Experiment11-5

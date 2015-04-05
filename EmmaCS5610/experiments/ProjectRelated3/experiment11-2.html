@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment11-2</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/apiResultShow.js"></script>
+    
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body class="container" ng-app="api">
+<div ng-controller="apiController">
+
+<!-- See Favorite Recipes-->
+<h2>Favorite Recipes</h2>
+
+<table class="table table-striped">
+   <thead>
+       <tr>
+         <th>Image</th>
+         <th>Label</th>
+         <th>HealthLables</th>
+         <th>Calories</th>
+         <th>Level</th>
+         <th>CookingTime</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="cookbook in favoriteRecipes">
+                 <td><img ng-src="{{cookbook.recipe.image}}" width=90px /></td> <!--Don't forgot to add {{}}to the dynamic URL. Can add width and height for that image-->
+                 <td>{{cookbook.recipe.label}}</td>
+                 <td>{{cookbook.recipe.healthLabels}}</td>
+                 <td>{{cookbook.recipe.calories}}</td>
+                 <td>{{cookbook.recipe.level}}</td>
+                 <td>{{cookbook.recipe.cookingTime}}</td>
+                 <td>
+                   <button ng-click="removeFavoriteRecipe(cookbook)" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove"></span>
+                   </button>
+                 </td>    
+                </tr>
+    </tbody>
+</table>
+
+<!-- Search Recipes-->
+<div class="input-group">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput recipe name or ingredient" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+</div>
+
+<table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Label</th>
+                    <th>HealthLables</th>
+                    <th>Calories</th>
+                    <th>Level</th>
+                    <th>CookingTime</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr ng-repeat="cookbook in cookbooks">
+                 <td><img ng-src="{{cookbook.recipe.image}}" width=90px /></td> <!--Don't forgot to add {{}}to the dynamic URL. Can add width and height for that image-->
+                 <td>{{cookbook.recipe.label}}</td>
+                 <td>{{cookbook.recipe.healthLabels}}</td>
+                <td>{{cookbook.recipe.calories}}</td>
+                <td>{{cookbook.recipe.level}}</td>
+                 <td>{{cookbook.recipe.cookingTime}}</td>
+                <td><button ng-click="addToFavorites(cookbook)" class="btn btn-info">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button></td>
+                           
+                </tr>
+            </tbody>
+        </table>
+
+</div>
+<hr />
+<p>In this expriment, I based on the search function to realized the function that mark some recipes to favorites and also
+can delete this mark. Then, users are able to see the details of the recipe which they liked before.</p>
+<p>For the first part, I render every recipes in the search result with a button of like. Use this button, user can add this 
+specific recipe into his or her favorites.</p>
+<pre>
+&lt;td&gt;&lt;button ng-click=&quot;addToFavorites(cookbook)&quot; class=&quot;btn btn-info&quot;&gt;
+                    &lt;span class=&quot;glyphicon glyphicon-heart-empty&quot;&gt;&lt;/span&gt;
+                &lt;/button&gt;&lt;/td&gt;
+</pre>
+<p>Besides, in the favorites recipes table, every favorite recipe can be canceled from the likes. With the button of "X"</p>
+<pre>
+    &lt;button ng-click=&quot;removeFavoriteRecipe(cookbook)&quot; class=&quot;btn btn-danger&quot;&gt;
+                      &lt;span class=&quot;glyphicon glyphicon-remove&quot;&gt;&lt;/span&gt;
+                   &lt;/button&gt;
+</pre>
+<p>In the js files, these two button are two functions: addToFavorites and removeFavoriteRecipe. For addToFavorites, it has
+a parameter, cookbook</p>
+<pre>
+  $scope.favoriteRecipes = [];
+    $scope.addToFavorites = function (cookbook) {
+        $scope.favoriteRecipes.push(cookbook);
+    }
+</pre>
+<p>For removeFavoriteRecipe, we can find the index of this specific cookbook, and then delete it from the arrray of cookbooks according
+to it's index</p>
+<pre>
+$scope.removeFavoriteRecipe = function (cookbook) {
+        var index = $scope.favoriteRecipes.indexOf(cookbook);
+        $scope.favoriteRecipes.splice(index, 1);
+    }
+</pre>
+<hr />
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/experiment11-2.html" target="_blank">Experiment11-2 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/js/favoriteRecipes.js" target="_blank">Experiment11-2 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="https://developer.edamam.com" target="_blank">API website</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

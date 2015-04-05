@@ -22,7 +22,8 @@
 <hr />
 
 <p>The purpose of this experiments is to get specific results from other web API. The format of data is JSONP.</p>
-<p>Using API ID,API key and the key word user given to create a target URL.</p>
+<p>Using API ID,API key and the key word user given to create a target URL. The code below is to make up a valid URL to get
+search. The reason I seprate the URL to three parts is that we must get the keyword user given dynamiclly.</p>
 <pre> var url1 = "https://api.edamam.com/search?q=";
         var keyword = $scope.searchByName;
         var recipes = [];
@@ -30,7 +31,8 @@
         var url2 = "&app_id=7ae78f96&app_key=62b1961b12d7e4b28ad90b40854bf572";
         var targetURL = url1 + keyword + url2;</pre>
 
-<p>Ask the web api to transport data in JSONP format.And if successfully get the data, show get message.</p>
+<p>Ask the web api to transport data in JSONP format.And if successfully get the data, show get message.This method is jQuery way.
+But my frame work is AngularJS. So i'll realize this function in angularJS way next week.</p>
 <pre>
     $.ajax({
             dataType: 'jsonp',

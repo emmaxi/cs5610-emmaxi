@@ -50,7 +50,9 @@
 	</div>
 <hr />
 <p>In this experiment, I realized a simple register page. It allows user to imput their information and the page will check is if these information
-is valid.The re-enter password should match the previous one. Username can not be empty. The email should in the correct format, has one @ symbol and so on.</p>
+is valid.The re-enter password should match the previous one. Username can not be empty. The email should in the correct format, has one @ symbol and so on.
+The most inportant of these functions are document.getElementByID(), use this way, we can get what the user have imput. As mentioned before, in this
+project, my frame work is AngularJS, so I'll use ng-click to instead of the onclick funciton now. </p>
 <pre>
  //check if the email user input is in the correct pattern
         function checkEmail() {
@@ -62,12 +64,6 @@ is valid.The re-enter password should match the previous one. Username can not b
             }
             alert("Congruatulations! The email address is correct.");
             return true;
-        };
-
-        function isEmail(str) {
-            //RegExp for BRA company, whose email is like first.last@boston.gov or first.m.last@boston.gov
-            var reg = /^[A-Za-z]+?\.([A-Za-z]+\.)?[A-Za-z]+?@boston.gov$/;
-            return reg.test(str);
         };
 
         //Make sure that username can not be empty

@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment11-2</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/apiResultShow.js"></script>
+    
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body class="container" ng-app="api">
+<div ng-controller="apiController">
+
+<!-- See Favorite Recipes detail-->               
+<h2>Details for specific recipe:</h2>
+{{details}}
+
+
+<!-- See Favorite Recipes-->
+<h2>Favorite Recipes</h2>
+
+<table class="table table-striped">
+   <thead>
+       <tr>
+         <th>Image</th>
+         <th>Label</th>
+         <th>HealthLables</th>
+         <th>Calories</th>
+         <th>Level</th>
+         <th>CookingTime</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="cookbook in favoriteRecipes">
+                 <td><img ng-src="{{cookbook.recipe.image}}" width=90px /></td> <!--Don't forgot to add {{}}to the dynamic URL. Can add width and height for that image-->
+                 <td>{{cookbook.recipe.label}}</td>
+                 <td>{{cookbook.recipe.healthLabels}}</td>
+                 <td>{{cookbook.recipe.calories}}</td>
+                 <td>{{cookbook.recipe.level}}</td>
+                 <td>{{cookbook.recipe.cookingTime}}</td>
+                 <td>
+                   <button ng-click="removeFavoriteRecipe(cookbook)" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove"></span>
+                   </button>
+                   <button ng-click="detailsRecipe(cookbook)" class="btn btn-primary">
+                      <span class="glyphicon glyphicon-search"></span>
+                   </button>
+                 </td>    
+                </tr>
+    </tbody>
+</table>
+
+<!-- Search Recipes-->
+<div class="input-group">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput recipe name or ingredient" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+</div>
+
+<table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Label</th>
+                    <th>HealthLables</th>
+                    <th>Calories</th>
+                    <th>Level</th>
+                    <th>CookingTime</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr ng-repeat="cookbook in cookbooks">
+                 <td><img ng-src="{{cookbook.recipe.image}}" width=90px /></td> <!--Don't forgot to add {{}}to the dynamic URL. Can add width and height for that image-->
+                 <td>{{cookbook.recipe.label}}</td>
+                 <td>{{cookbook.recipe.healthLabels}}</td>
+                <td>{{cookbook.recipe.calories}}</td>
+                <td>{{cookbook.recipe.level}}</td>
+                 <td>{{cookbook.recipe.cookingTime}}</td>
+                <td><button ng-click="addToFavorites(cookbook)" class="btn btn-info">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button></td>
+                           
+                </tr>
+            </tbody>
+        </table>
+
+</div>
+<hr />
+<p>This experiments also based on the previous experiments. In experiments2, we finshed the function that add a recipe into 
+favorites, as well as delete it. Now ,in this experiment, I add another funtion that allow user to see the details from the recipes array which
+he or she marked as favorite. In order to realize it, we must look the document for API.</p>
+<p>In the document, I find a parameter named r.</p>
+<pre>
+ It said that: Returns information about a specific recipe based on its ID ie. -r=http://www.edamam.com/ontologies/edamam.owl%23recipe_637913ec61d9da69eb451818c3293df2
+</pre>
+<p>So we must find the recipe ID from the object we get from search operation. In object structure, I find a parameter named "uri", but
+it's not the correct format of recipe ID. So I used the javascript function split() to get the id substring and use idnex to retrive it.</p>
+<pre>
+      $scope.detailsRecipe = function (cookbook) {
+
+        var strs = new Array();
+        strs = cookbook.recipe.uri.split("_");
+        var recipeId = strs[1];
+        $http.jsonp("https://api.edamam.com/search?r=http://www.edamam.com/ontologies/edamam.owl%23recipe_" + recipeId + "&callback=JSON_CALLBACK")
+        .success(function (cookbook) {
+            $scope.details = cookbook;
+        });
+    }
+</pre>
+<p>The last one to say is that in this experiment,I only get the details according to recipe ID. I'll do further render in specific in next 2 weeks.</p>
+<hr />
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/experiment11-4.html" target="_blank">Experiment11-4 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/js/apiResultShow.js" target="_blank">Experiment11-4 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="https://developer.edamam.com" target="_blank">API website</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

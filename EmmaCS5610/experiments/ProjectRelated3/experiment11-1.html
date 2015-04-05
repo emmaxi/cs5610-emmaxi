@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment1</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+   
+    <script type="text/javascript" src="js/apiResultShow.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container" ng-app="api">
+<h1>Show API Result</h1>
+<div ng-controller="apiController">
+
+
+<!-- Search Recipes-->
+<div class="input-group">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput recipe name or ingredient" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+</div>
+
+<table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Label</th>
+                    <th>HealthLables</th>
+                    <th>Calories</th>
+                    <th>Level</th>
+                    <th>CookingTime</th>
+                    <th>KeyIngredients</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr ng-repeat="cookbook in cookbooks">
+                 <td><img ng-src="{{cookbook.recipe.image}}" width=90px /></td> <!--Don't forgot to add {{}}to the dynamic URL. Can add width and height for that image-->
+                 <td>{{cookbook.recipe.label}}</td>
+                 <td>{{cookbook.recipe.healthLabels}}</td>
+                <td>{{cookbook.recipe.calories}}</td>
+                <td>{{cookbook.recipe.level}}</td>
+                 <td>{{cookbook.recipe.cookingTime}}</td>
+                <td>{{cookbook.recipe.keyIngredients}}</td>
+                <td><button ng-click="addToFavorites(cookbook)" class="btn btn-info">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button></td>           
+                </tr>
+            </tbody>
+        </table>           
+<hr />
+
+<p>The purpose of this experiments is to get specific results from other web API and then render them in table. </p>
+<p>The same with last week's experiments, I create a submit button event for search. In search function, I realized the connect
+to other web API and then get them.</p>
+<pre> var url1 = "https://api.edamam.com/search?q=";
+        var keyword = $scope.searchByName;
+        var recipes = [];
+        $scope.recipes = recipes;
+        var url2 = "&app_id=7ae78f96&app_key=62b1961b12d7e4b28ad90b40854bf572";
+        var targetURL = url1 + keyword + url2;</pre>
+<p> Since if I use jQuery Ajax to get the jsonp data, the view of angularJS can not render
+them. Because angularJS has no ware of JQuery. So I changed the code into angularJS way.It's important to make this change.</p>
+ <pre>   $http.jsonp(targetURL)
+                .success(function (response) {
+                    $scope.cookbooks = response.hits;
+                    console.log(targetURL);
+                    console.log($scope.cookbooks);
+                    //alert($scope.cookbooks[0].recipe.keyIngredients[0].uri);
+                    //alert($scope.cookbooks[0].recipe.image);
+                });
+</pre>
+<p>Besides, I rendered some attributes of these cookbooks. Using ng-repeat to iterator.</p>
+<pre>
+    &lt;tbody&gt;
+                 &lt;tr ng-repeat=&quot;cookbook in cookbooks&quot;&gt;
+                 &lt;td&gt;&lt;img ng-src=&quot;{{cookbook.recipe.image}}&quot; width=90px /&gt;&lt;/td&gt; &lt;!--Don&apos;t forgot to add {{}}to the dynamic URL. Can add width and height for that image--&gt;
+                 &lt;td&gt;cookbook.recipe.label&lt;/td&gt;
+                 &lt;td&gt;cookbook.recipe.healthLabels&lt;/td&gt;
+                &lt;td&gt;cookbook.recipe.calories&lt;/td&gt;
+                &lt;td&gt;cookbook.recipe.level&lt;/td&gt;
+                 &lt;td&gt;cookbook.recipe.cookingTime&lt;/td&gt;
+                &lt;td&gt;cookbook.recipe.keyIngredients&lt;/td&gt;
+                &lt;td&gt;&lt;button ng-click=&quot;addToFavorites(cookbook)&quot; class=&quot;btn btn-info&quot;&gt;
+                    &lt;span class=&quot;glyphicon glyphicon-heart-empty&quot;&gt;&lt;/span&gt;
+                &lt;/button&gt;&lt;/td&gt;           
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+</pre>
+</div>
+<hr />
+ <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/experiment11-1.html" target="_blank">Experiment11-1 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/js/apiResultShow.js" target="_blank">Experiment11-1 Javascript Source</a><br />
+  <h3>References:</h3>
+    <a href="https://developer.edamam.com" target="_blank">API website</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

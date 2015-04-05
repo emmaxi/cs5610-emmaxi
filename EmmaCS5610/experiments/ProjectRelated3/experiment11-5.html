@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment11-5</title>
+   <link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+
+   <link rel="stylesheet" href="css/nav.css"  media="screen" title="no title" >
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+<h1>nav experiments</h1>
+
+	<div class="ph-heart-nav nav">
+		<a href="#">Home</a>
+		<a href="#">Login</a> 
+		<a href="#">Register</a>
+		<a href="#">Profile</a>
+		<div class="effect"></div>
+	</div>
+<hr />
+<p>In this experiment, I realized a simple navigator on home page of my project.</p>
+<p>This simple animation used ccs3. Fistly, I render the text.Then ,the heart actually is 2 parts.And I using position to combined them together.
+Then there is a hover effect,when hover happens, the arrow comes form the left side.</p>
+<pre>
+      .ph-heart-nav .effect {
+      position: absolute;
+      bottom: 26px;
+      background-position: 0 0;
+      height: 8px;
+      width: 62px; 
+      margin-left:-31px; }
+
+    .ph-heart-nav a:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      background-position: -62px 0;
+      height: 20px;
+      width: 11px;
+      margin-left: -11px; }
+</pre>
+<p> And every node has different postion for arrow to stop.So use the code below to figure it out</p>
+<pre>
+    .nav a:nth-child(1):hover ~ .effect {
+	  left: 12.5%; }
+	.nav a:nth-child(2):hover ~ .effect {
+	  left: 37.5%; }
+	.nav a:nth-child(3):hover ~ .effect {
+	  left: 62.5%; }
+	.nav a:nth-child(4):hover ~ .effect {
+	  left: 87.5%; }
+</pre>
+<p>What's more, the arrow has it's own div tag and postion,then it can flow and ease-in-out. We must keep this div tag there.</p>
+<pre>
+    &lt;div class=&quot;effect&quot;&gt;&lt;/div&gt;
+
+     -webkit-transition: 0.7s ease-in-out;
+     -moz-transition: 0.7s ease-in-out;
+    -o-transition: 0.7s ease-in-out;
+    -ms-transition: 0.7s ease-in-out;
+    transition: 0.7s ease-in-out; 
+</pre>
+<hr />
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/experiment11-5.html" target="_blank">Experiment11-5 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/css/nav.js" target="_blank">Experiment11-5 CSS Source</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

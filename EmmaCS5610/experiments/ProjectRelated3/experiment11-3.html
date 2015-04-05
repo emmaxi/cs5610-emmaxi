@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment11-3</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/getInfoFromId.js"></script>
+    
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/waterfall.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link type="text/css" href="css/style.css" rel="Stylesheet" />
+    <link type="text/css" href="css/waterfallRender.css" rel="Stylesheet" />
+    
+
+ <script>
+     $(document).ready(function () {
+         $('#result').pinterest_grid({
+             no_columns: 3,
+             padding_x: 30,
+             padding_y: 30,
+             margin_bottom: 50,
+             single_column_breakpoint: 700
+         });
+     });
+</script>
+</head>
+
+<body class="container" ng-app="api">
+<h1>Register Page</h1>
+<div ng-controller="apiController">
+
+<!-- Search Recipes-->
+<div class="input-group">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput recipe name or ingredient" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+</div>
+
+            	
+<section id="result">
+    <article class="white-panel" ng-repeat="cookbook in cookbooks"> 
+        <img ng-src="{{cookbook.recipe.image}}" width=90px />
+        <h1><a ng-click="detailsRecipe(cookbook)">{{cookbook.recipe.label}}</a></h1>
+        <p>{{cookbook.recipe.level}}</p>
+    </article>
+</section>
+
+<hr />
+<h4>In this experiment, I use waterfall method to render the search result instead of render them in table.
+In the waterfall method, every recipe of search results rendered as a small picture with several brief introduction. Such 
+as label name, and health tag. I'll add other attributes in it later.</h4>
+<h5>waterfall.js helps us to render these recipe in a flexible way. It will calculate the width and height of every elements in
+the waterfall. Since every data we have are got from other API, so we can not give them a fixed width and height. Using waterfall.js, we
+figured it out.</h5>
+<pre>
+        var self = this,
+            tallest = 0,
+            row = 0,
+            $container = $(this.element),
+            container_width = $container.width();
+        $article = $(this.element).children();
+        columns = self.options.no_columns;
+
+            if (single_column_mode === true) {
+                left_out = 0;
+            } else {
+                left_out = (index % columns) * (article_width + self.options.padding_x);
+            }
+            $this.css({
+                'left': left_out,
+                'top': top
+            });
+        });
+        this.tallest($container);
+        $(window).resize();
+ </pre>
+ <h5>Besides, in front page, I use angularJS to render every recipe we have searched. ng-repeat helps me to finish it. In previous
+ experiments, we only use ng-repeat in table. But actually, it can also be used in div tag, which make things much earier than for clause loop.</h5>
+ <pre>
+    &lt;article class=&quot;white-panel&quot; ng-repeat=&quot;cookbook in cookbooks&quot;&gt; 
+        &lt;img ng-src=&quot;{{cookbook.recipe.image}}&quot; width=90px /&gt;
+        &lt;h1&gt;&lt;a ng-click=&quot;detailsRecipe(cookbook)&quot;&gt;{{cookbook.recipe.label}}&lt;/a&gt;&lt;/h1&gt;
+        &lt;p&gt;{{cookbook.recipe.level}}&lt;/p&gt;
+    &lt;/article&gt;
+ </pre>
+
+<hr />
+<h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/experiment11-3.html" target="_blank">Experiment11-3 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated3/js/apiResultShow.js" target="_blank">Experiment11-3 Javascript Source</a><br />
+    
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>
