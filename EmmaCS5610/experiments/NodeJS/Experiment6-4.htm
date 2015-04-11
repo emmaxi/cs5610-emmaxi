@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Expriment6-4</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<h1>How to use NodeJS and OpenShift to update data in server?</h1>
+<a href="http://nodejs-emmaxi.rhcloud.com/exp6-4.html" target="_blank">the show page of this experiment</a>
+  <hr />
+        
+    <p>This experiment is based on experiment6-3, and add the update function.</p>
+    <p> First of all ,in order to update one item .We must select it. So we can get the index form it. And then use the index to 
+    search the whole item, which just like search by id. 
+    </p>
+    <pre>
+    
+    $scope.update = function(city) {    
+      CityService.update(city._id,city,function (response) {
+        $scope.cities = response;
+      });
+    }
+
+    </pre>
+    <p>
+    Then,make the request URL and parse the necessary information to server JavaScript file.
+    </p>
+    <pre>
+     var update = function(id,city, callback){
+     $http.put("/city/"+ id, city)
+       .success(callback);
+   }
+    </pre>
+    <p>
+    In server.js file, we re-define the put and post methods.
+    </p>
+    <pre>
+    app.put("/city/:id", function(req,res){
+  CityModel.update({_id:req.params.id},{$set: req.body}, function(err,doc){
+     CityModel.find(function (err,data) {
+        res.json(data);
+    });
+  });
+});
+    </pre>
+        <p>
+           Also, it still has these code snippet, for openshift use.
+        </p>
+        <pre>
+            var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+            var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+            app.listen(port, ip);
+        </pre>        
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/Experiment6-4.htm" target="_blank">Experiment6-4 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/server.js" target="_blank">Experiment6-4 Server Side Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/update-data.js" target="_blank">Experiment6-4 Client Side Source</a><br />
+  <h3>References:</h3>
+    <a href="www.openshift.com" target="_blank">Express framework</a><br />
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

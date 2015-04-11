@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Expriment6-3</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<h1>How to use NodeJS and OpenShift to update data to the server?</h1>
+<a href="http://nodejs-emmaxi.rhcloud.com/exp6-3.html" target="_blank">the show page of this experiment</a>
+  <hr />
+        
+    <p>In this experiment I finished the delete data fucntion. The important one is that when you remove the data, you are no need render the whole
+    cities once again. Becasue we use MEAN stack and angluarJS is a mechinism which can double binding.</p>
+    <pre>
+     $scope.remove = function (id) { 
+      CityService.remove(id, function(response) {
+         $scope.cities = response;
+         CityService.findAll(function (response) {
+        $scope.cities = response;
+        });
+    });
+   }
+    </pre>
+        <p>
+           When it refers to the code about function realization and the information render,it's the same with experiments6-1.But, in order
+           to use OpenShift, it's different. Besides, the difference in code is shown below.
+        </p>
+        <pre>
+            var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+            var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+            app.listen(port, ip);
+        </pre>
+        <p>Personly, learnd to use git in command line. Such as "git commit -a" , "git add .", "git push". Having problems in using git 
+        and OpenShift, but finally figured them out.</p>
+        
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/Experiment6-3.htm" target="_blank">Experiment6-3 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/delete-data.js" target="_blank">Experiment6-3 Client Side Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/server.js" target="_blank">Experiment6-3 Server Side Source</a><br />
+  <h3>References:</h3>
+    <a href="www.openshift.com" target="_blank">Openshift Website</a><br />
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>

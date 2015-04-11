@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Expriment6-5</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<h1>How to use NodeJS and OpenShift to create and publish website to the server?</h1>
+<a href="http://nodejs-emmaxi.rhcloud.com/exp6-5.html" target="_blank">the show page of this experiment</a>
+  <hr />
+        
+    <p>This experiment is based on the previous 4 experiments. What's new for this exp is we add the event.User can select a city and then
+    use the event table below to add a specific event for that city.</p>
+        <pre>
+           
+    $scope.selectedIndex = null;
+    /*$scope.select = function(index){
+        $scope.selectedIndex = index;
+        $scope.city = $scope.cities[index];
+    }*/
+
+    $scope.select = function(index){
+        $scope.selectedIndex = index;
+        $scope.selectedCity = $scope.cities[index];
+    }
+        </pre>
+        <p>Then add the new event</p>
+        <pre> $scope.addEvent = function(event)
+    {
+        if (typeof $scope.selectedCity.events == "undefined")
+        {
+            $scope.selectedCity.events = [];
+        }
+        var newEvent = {
+            name: event.name
+        }
+        $scope.selectedCity.events.push(newEvent);
+         CityService.update($scope.selectedCity._id, $scope.selectedCity,function(response){
+          $scope.cities = response;
+        });
+    }</pre>
+        
+  <hr/>
+ 
+  <h2>relative code</h2>
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/Experiment6-5.htm" target="_blank">Experiment6-5 Html Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/server.js" target="_blank">Experiment6-5 Server Side Source</a><br />
+   <a href="../../fileview/Default.aspx?~/experiments/NodeJS/js/app.js" target="_blank">Experiment6-5 Client Side Source</a><br />
+  <h3>References:</h3>
+    <a href="www.openshift.com" target="_blank">Openshift Website</a><br />
+ <footer>Copyright by Xi Wang</footer>
+</body>
+</html>
