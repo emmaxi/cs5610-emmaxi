@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment10-5</title> 
+    <link type="text/css" href="../../css/register.css" rel="Stylesheet" />
+</head>
+<body>
+    <div class="main" style="margin-top:250px;">
+		<div class="register-form" style="width:500px;">
+			<h1>Register Form</h1>
+			<div class="head"><img src="../../images/user-image.png" alt=""/></div>
+			<form id="form">
+               <div class="control-group">
+                    <label for="userName" class="col-sm-8 control-label">Please input your username:</label>
+                    <div class="controls">
+				        <input type="text" id="userName"  ng-model="user.username" >
+                    </div>
+              </div>
+
+                <div class="control-group">
+                    <label for="password" class="col-sm-8 control-label">Please input the password:</label>
+                    <div class="controls">
+                        <input type="password" id="password" ng-model="user.password" >
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="re-password" class="col-sm-8 control-label">Please confirm the password:</label>
+                    <div class="controls">
+                        <input type="password" id="re-password" ng-model="user.password2">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="email" class="col-sm-8 control-label">Please input your email:</label>
+                    <div class="controls">
+                        <input type="email" id="email" ng-model="user.email">
+                    </div>
+                </div>
+                
+                <button class="submit" style="margin-top:20px;" type="submit" ng-click="register(user)">Register</button>   
+		</form>
+		</div>
+	</div>
+
+
+</body>
+</html>

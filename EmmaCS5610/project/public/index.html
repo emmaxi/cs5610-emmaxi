@@ -1,0 +1,43 @@
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<script src="js/jquery-1.11.2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="views/login/login.js"></script>
+<script src="views/profile/profile.js"></script>
+<script src="views/nav/nav.js"></script>
+<script src="views/register/register.js"></script>
+<script src="views/searchResult/searchResult.js"></script>
+<script src="views/recipeDetails/recipeDetails.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../../css/nav.css"  media="screen" title="no title" >
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+<body ng-app="PassportApp">
+    <div class="container">
+    <div class="ph-heart-nav nav">
+        <nav ng-controller="NavCtrl" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="nav-collapse" style="height:auto;">
+          <a href="#home">Home</a> 
+          <a href="#search">Search</a>  
+          <span ng-show="!currentUser">
+              <a href="#login">Login</a> 
+              <a href="#register">Register</a>
+              <div class="effect"></div>
+          </span>
+          <span ng-show="currentUser">
+              <a href="#profile">Profile</a> 
+              <a href="#logout" ng-click="logout()">Logout</a>
+              <div class="effect"></div>
+          </span>
+          <div class="effect"></div>
+          </div>
+        </nav>
+        
+        </div>
+        <div ng-view style="margin-top:100px;">
+        </div>
+    </div>
+</body>

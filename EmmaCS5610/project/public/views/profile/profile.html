@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Profile</title> 
+    <link type="text/css" href="../../css/profile.css" rel="Stylesheet" />
+    <link href='http://fonts.useso.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.useso.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../../css/template.css" media="screen" />
+	<link rel="stylesheet" href="../../css/options.css" /> 
+</head>
+<body class="container" >
+						
+    <div class="clear"></div>
+	<div id="carte" style="margin-top:100px;">
+		<div id="carte-top" class="wrap"></div>
+		<div id="content-block" class="wrap">
+
+			<div class="separator top-separator content left"></div>
+			<div class="separator top-separator content right"></div>
+			
+			<div id="main" class="content fullwidth">
+		
+				<article class="article art">		
+					<h1 class="article-title">The profile of {{currentUser.username}}</h1>
+
+	
+					<div class="article-body">
+					
+					<!--<img class="left" src="../../images/user-image.png" alt="Image" width="300" style="margin-right:120px;"/>-->
+                        
+                      
+                      <div class="form-group" style="width:400px; margin-left:220px;">
+                      <h3>Update Profile</h3>
+                        <input ng-model="currentUser.username" class="form-control"/><br/>
+                        <input ng-model="currentUser.password" class="form-control" type="password"/><br/>
+                        <input ng-model="currentUser.email" class="form-control"/><br/>
+                        <button ng-click="updateUser(currentUser)" style="margin-left:330px;">Update</button>
+                      </div>
+
+                 <hr />   
+                 <h2>Your comments for recipes</h2>
+                  <table class="zebratable fulltable hovertable">
+							<thead>
+								<tr>
+								<th></th> 
+                                <th>RecipeName</th>
+                                <th>Comment</th> 
+								</tr>
+							</thead> 
+							<tbody>
+								<tr ng-repeat="review in reviews">
+									<th><span class="glyphicon glyphicon-comment"></span></th>
+									<td>{{review.reviewRLabel}}</td>
+									<td>{{review.reviewComment}}</td>			
+								</tr>
+							</tbody>
+						</table>
+
+
+                 <hr />   
+                 <h2>The recipe you like</h2>
+                  <table class="zebratable fulltable hovertable">
+							<thead>
+								<tr>
+								<th></th> 
+                                <th>RecipePicture</th>
+                                <th>RecipeName</th>
+                                <th>UnLike</th> 
+								</tr>
+							</thead> 
+							<tbody>
+								<tr ng-repeat="like in likes">
+									<th><span class="glyphicon glyphicon-heart"></span></th>
+									<td><img ng-src="{{like.likeRImage}}" /></td>
+									<td>{{like.likeRName}}</td>
+                                    <td><button ng-click="removeLike(like)">UnLike!</button></td>			
+								</tr>
+							</tbody>
+						</table>
+             <hr />   
+                 <h2>Other Member List</h2>
+                  <table class="zebratable fulltable hovertable">
+							<thead>
+								<tr>
+								<th></th> 
+                                <th>UserName</th>
+                                <th>UserEmail</th>
+                                <th>UserRole</th> 
+                                <th>Follow</th>
+								</tr>
+							</thead> 
+							<tbody>
+								<tr ng-repeat="user in users">
+									<th><span class="glyphicon glyphicon-user"></span></th>
+									<!--<td>{{user._id}}</td>-->
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>member</td>
+                                    <td><button ng-click="follow(user)">Follow!</button></td>			
+								</tr>
+							</tbody>
+						</table>
+
+
+
+                   
+                 <h2>The user you followed</h2>
+                  <table class="zebratable fulltable hovertable">
+							<thead>
+								<tr>
+								<th></th> 
+                                <th>UserName</th>
+                                <th>Unfollow</th>
+								</tr>
+							</thead> 
+							<tbody>
+								<tr ng-repeat="follow in follows">
+									<th><span class="glyphicon glyphicon-star"></span></th>
+									<td>{{follow.befollowedName}}</td>
+                                    <td><button ng-click="removeFollow(follow)">Unfollow!</button>			
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+				
+			</div><!-- end main -->
+			
+			<div class="clear left content">
+				<div class="separator"></div>
+			</div>
+			
+			<div class="right content">
+				<div class="separator"></div>
+			</div>			
+		</div><!-- end #content-block -->
+		
+		<div id="carte-bottom" class="clear wrap"></div>
+	</div><!-- end #carte -->
+</body>
+</html>

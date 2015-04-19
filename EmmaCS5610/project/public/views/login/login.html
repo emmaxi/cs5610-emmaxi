@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment10-4</title> 
+    <link type="text/css" href="../../css/login.css" rel="Stylesheet" />
+</head>
+<body>
+<div class="main" style="margin-top:200px;">
+		<div class="login-form">
+			<h1>Login Form</h1>
+            <div class="head"><img src="../../images/user-image.png" alt=""/></div>
+			<form>
+				<input type="text" class="text" value="UserName" ng-model="user.username" placeholder="Username"/>
+				<input type="password" ng-model="user.password" value="" placeholder="Password"/>
+                <button class="submit" ng-click="login(user)">Login</button>  
+			</form>   
+		</div>	
+	</div>
+
+</body>
+</html>

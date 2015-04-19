@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>searchResult</title>
+    <script type="text/javascript" src="../../js/jquery-1.11.2.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../../js/angular.js"></script>
+    <!--<script type="text/javascript" src="../../js/getInfoFromId.js"></script>-->
+    
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/waterfall.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link type="text/css" href="../../css/style.css" rel="Stylesheet" />
+    <link type="text/css" href="../../css/waterfallRender.css" rel="Stylesheet" />
+    
+
+ <script>
+     $(document).ready(function () {
+         $('#result').pinterest_grid({
+             no_columns: 3,
+             padding_x: 30,
+             padding_y: 30,
+             margin_bottom: 50,
+             single_column_breakpoint: 700
+         });
+     });
+</script>
+</head>
+
+<body class="container" ng-app="api">
+<h1>Search Result</h1>
+<div ng-controller="apiController">
+<!--{{currentUser}}-->
+<!-- Search Recipes-->
+<div class="input-group" style="width:300px;margin-left:20px;">
+                <input type="text" ng-model="searchByName" class="form-control" placeholder="imput recipe name or ingredient" style="width:950px;"/>
+                <span class="input-group-btn" style="width:200px;">
+                  <button ng-click="search()" class="btn btn-success" type="button">Search!</button>
+                </span>
+</div>
+
+            	
+<section id="result">
+    <article class="white-panel" ng-repeat="cookbook in cookbooks"> 
+        <img ng-src="{{cookbook.recipe.image}}" width=90px />
+        <h1><a ng-click="detailsRecipe(cookbook)">{{cookbook.recipe.label}}</a></h1>
+        <p>{{cookbook.recipe.level}}</p>
+        <button ng-click="addLike(cookbook)" class="btn btn-info">
+        <span class="glyphicon glyphicon-heart-empty"></span>
+</button> 
+    </article>
+</section>
+
+</body>
+</html>
